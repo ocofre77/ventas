@@ -33,6 +33,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/Dashboard1', 'DashboardsController@admin');
 	Route::get('/Dashboard2', 'DashboardsController@sales');
+	Route::get('/Dashboard3', 'DashboardsController@properties');
 
 
     Route::resource('PropertyStates','PropertyStatesController');

@@ -48,6 +48,9 @@
                     <li class="active">
                         <a href="{{ url('Dashboard2') }}">
                             <i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                    <li >
+                        <a href="{{ url('Dashboard3') }}">
+                            <i class="fa fa-circle-o"></i> Dashboard v3</a></li>
                 </ul>
             </li>
 
@@ -65,8 +68,8 @@
                 <a href="#"><i class="fa fa-users" aria-hidden="true"></i>
                     <span>Contactos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Mis Inmuebles</a></li>
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
+                    <li><a href="#">Mis Contactos</a></li>
+                    <li><a href="#">Propietarios</a></li>
                 </ul>
             </li>
 

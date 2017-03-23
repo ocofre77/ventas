@@ -306,5 +306,45 @@
 		</div>
 	</div>
 </div>
-
+<div>
+  <div class="row">
+    <div class="col-md-8">
+      <div style="margin:20px;padding:30px;">
+        <h2 class="text-center">Vaya, parece que aún no has añadido ningún inmueble</h2>
+        <p class="text-center" style="font-size:130%;">¡No pasa nada!</p>
+        <hr>
+        <p>
+        </p><ul style="font-size:110%;padding-right:100px;">
+          <li>Puedes <strong>añadir tus inmuebles directamente</strong> desde el botón de la esquina superior derecha</li>
+          <li>Solicita a nuestro equipo ayuda para importar automáticamente tu cartera
+            <ul>
+              <li>Importación <strong>desde portales</strong></li>
+              <li>Importación <strong>desde ficheros</strong>
+                <ul>
+                  <li>Excel, XML, CSV...</li>
+                </ul>
+              </li>
+              <li>¿Ninguna de las anteriores? Contacta con nuestro equipo para encontrar la solución
+                adecuada para tu caso</li>
+            </ul>
+          </li>
+        </ul>
+        <p></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div style="margin:20px;padding:20px;padding-top:70px;padding-bottom:70px;border-left:1px solid #CCC;">
+        <h3>Una vez hayas subido tu cartera...</h3>
+        <hr>
+        <ul style="font-size:110%;margin-top:40px;">
+          <li>Publicado en tu web al instante</li>
+          <li>Cruce de demandas con contactos</li>
+          <li>Multipublicación en portales, redes sociales, círculos de colaboradores</li>
+          <li>Envío de campañas de email</li>
+          <li>Y mucho más...</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

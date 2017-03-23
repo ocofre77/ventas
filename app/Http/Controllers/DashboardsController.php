@@ -17,4 +17,10 @@ class DashboardsController extends Controller
     {
         return view('Dashboards.DashboardSales');
     }
+
+    public function properties()
+    {
+        return view('Dashboards.DashboardProperty');
+    }
+
 }
