@@ -14,7 +14,7 @@ class CreatePropertyStatesTypes extends Migration
     {
         Schema::create('property_states', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name',30);
             $table->timestamps();
         });
     }
