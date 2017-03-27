@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomerTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCustomerTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
 
@@ -25,7 +25,7 @@ class CreateCustomerTable extends Migration
 
             $table->integer('customer_id')->unsigned();
 
-            $table->foreign('customer_id')->references('id')->on('customer_type');
+            $table->foreign('customer_id')->references('id')->on('customer_types');
 
 
 
@@ -40,6 +40,6 @@ class CreateCustomerTable extends Migration
      */
     public function down()
     {
-        Schema::drop('customer');
+        Schema::drop('customers');
     }
 }

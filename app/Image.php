@@ -10,4 +10,9 @@ class Image extends Model
 
     protected $fillable = ['path','name'];
 
+    function property(){
+        return $this->belongsTo('App\Property');
+    }
+
+
 }

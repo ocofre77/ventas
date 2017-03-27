@@ -19,17 +19,27 @@ class CreateTagsTable extends Migration
         });
 
 
-        Schema::create('propeyty_tag', function (Blueprint $table) {
+        Schema::create('property_tag', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('property_id')->unsigned();
             $table->integer('tag_id')->unsigned();
 
-            $table->foreign('property_id')->references('id')->on('propertiesp');
+            $table->foreign('property_id')->references('id')->on('properties');
             $table->foreign('tag_id')->references('id')->on('tags');
 
+            $table->timestamps();
+        });
 
 
+        Schema::create('tracking_tag', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->integer('tracking_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
+
+            $table->foreign('tracking_id')->references('id')->on('properties');
+            $table->foreign('tag_id')->references('id')->on('tags');
 
             $table->timestamps();
         });
@@ -45,6 +55,8 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
+        Schema::drop('property_tag');
+        Schema::drop('tracking_tag');
         Schema::drop('tags');
     }
 }

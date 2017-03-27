@@ -16,17 +16,20 @@ class CreatePropertiesTable extends Migration
             $table->increments('id');
 
 
-            $table->decimal('surface',10,2);
-            $table->decimal('useful_surface',10,2);
+            $table->decimal('area',10,2);
+            $table->decimal('useful_area',10,2);
             $table->integer('bedrooms');
             $table->integer('bathrooms');
 
+            $table->decimal('vale',10,2);
+            $table->decimal('aliquot',10,2);
 
-            $table->integer('tag_id')->unsigned();
+            $table->integer('owner_id')->unsigned();
             $table->integer('property_status_id')->unsigned();
             $table->integer('property_type_id')->unsigned();
 
-            $table->foreign('tag_id')->references('id')->on('tags');
+
+            $table->foreign('owner_id')->references('id')->on('customers');
             $table->foreign('property_status_id')->references('id')->on('property_states');
             $table->foreign('property_type_id')->references('id')->on('property_types');
 
