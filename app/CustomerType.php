@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CustomerType extends Model
 {
-    protected $table = "customer";
+    protected $table = "customer_types";
 
     protected $fillable=['name'];
 

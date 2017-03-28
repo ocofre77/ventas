@@ -37,7 +37,12 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::resource('PropertyStates','PropertyStatesController');
+
 	Route::resource('PropertyTypes','PropertyTypesController');
+
+	Route::resource('Customers','CustomersController');
+
+
 
 	//Route::resource('Properties','PropertiesController');
 

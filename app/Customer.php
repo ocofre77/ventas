@@ -18,10 +18,11 @@ class Customer extends Model
     ];
 
 
-
     public function customerType(){
         return $this->hasOne('App\CustomerType');
     }
+
+
 
 }
 
