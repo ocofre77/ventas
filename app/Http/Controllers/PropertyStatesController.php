@@ -70,7 +70,7 @@ class PropertyStatesController extends Controller
     public function edit($id)
     {
         $propertyStatus = PropertyStatus::find($id);
-        
+
         return view('PropertyStates.edit')->with('PropertyStatus',$propertyStatus);
     }
 
@@ -79,7 +79,7 @@ class PropertyStatesController extends Controller
         $propertyStatus = PropertyStatus::find($id);
         $propertyStatus->name = $request->name;
         $propertyStatus->save();
-        
+
         flash('Estado de Propiedad Actualizado.', 'info')->important();
         return redirect()->route('PropertyStates.index');
     

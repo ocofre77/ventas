@@ -59,7 +59,7 @@
                 <a href="#"><i class="fa fa-home" aria-hidden="true"></i>
                     <span>Inmuebles</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Mis Inmuebles</a></li>
+                    <li><a href="{{url('Properties')}}">Mis Inmuebles</a></li>
                     <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                 </ul>
             </li>
@@ -68,7 +68,7 @@
                 <a href="#"><i class="fa fa-users" aria-hidden="true"></i>
                     <span>Contactos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Mis Contactos</a></li>
+                    <li><a href="{{url('Customers')}}">Mis Contactos</a></li>
                     <li><a href="#">Propietarios</a></li>
                 </ul>
             </li>

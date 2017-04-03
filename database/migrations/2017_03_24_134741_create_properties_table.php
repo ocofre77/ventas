@@ -14,14 +14,17 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->string('name',30)->unique();
+            $table->string('state',80);
+            $table->string('city',80);
+            $table->string('address',250);
 
             $table->decimal('area',10,2);
             $table->decimal('useful_area',10,2);
             $table->integer('bedrooms');
             $table->integer('bathrooms');
 
-            $table->decimal('vale',10,2);
+            $table->decimal('value',10,2);
             $table->decimal('aliquot',10,2);
 
             $table->integer('owner_id')->unsigned();

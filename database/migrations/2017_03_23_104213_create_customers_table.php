@@ -23,11 +23,9 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->string('city');
 
-            $table->integer('customer_id')->unsigned();
+            $table->integer('customer_type_id')->unsigned();
 
-            $table->foreign('customer_id')->references('id')->on('customer_types');
-
-
+            $table->foreign('customer_type_id')->references('id')->on('customer_types');
 
             $table->timestamps();
         });

@@ -9,7 +9,16 @@ class Property extends Model
 
     protected $table="properties";
     protected $fillable=[
-        'name'
+        'name',
+        'area',
+        'useful_area',
+        'bedrooms',
+        'badrooms',
+        'value',
+        'aliguot',
+        'owner_id',
+        'property_status_id',
+        'property_type_id'
     ];
 
     function tags(){

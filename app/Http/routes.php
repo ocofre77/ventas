@@ -27,8 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
 
+    Route::auth();
 	Route::get('/home', 'HomeController@index');
 
 	Route::get('/Dashboard1', 'DashboardsController@admin');
@@ -37,18 +37,15 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::resource('PropertyStates','PropertyStatesController');
-
 	Route::resource('PropertyTypes','PropertyTypesController');
-
 	Route::resource('Customers','CustomersController');
+	Route::resource('Properties','PropertiesController');
 
-
-
-	//Route::resource('Properties','PropertiesController');
-
-
-
-	//Route::get('PropertyStatus', 'PropertyStatusController@index');
+	Route::get('cities/{id}', [
+		'uses' => 'StatesController@getCities',
+		'as' => 'States.getCities'
+		]
+	);
 
 
 	Route::get('/PropertyStatus/{id}/destroy', [
@@ -62,6 +59,13 @@ Route::group(['middleware' => 'web'], function () {
 		'as' => 'PropertyTypes.destroy'
 		]
 	);
+
+	Route::get('/Customers/{id}/destroy', [
+			'uses' => 'CustomersController@destroy',
+			'as' => 'Customers.destroy'
+		]
+	);
+
 
 
 });

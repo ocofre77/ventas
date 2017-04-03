@@ -11,7 +11,8 @@
         "acoustep/entrust-gui": "5.2.x-dev",
         "zizaco/entrust": "5.2.x-dev",
         "laracasts/flash": "^2.0",
-        "laravelcollective/html": "^5.2.0"
+        "laravelcollective/html": "^5.2.0",
+        "genealabs/phpgmaps": "~0.3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
