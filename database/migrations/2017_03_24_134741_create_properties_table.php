@@ -15,8 +15,6 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',30)->unique();
-            $table->string('state',80);
-            $table->string('city',80);
             $table->string('address',250);
 
             $table->decimal('area',10,2);
@@ -30,11 +28,13 @@ class CreatePropertiesTable extends Migration
             $table->integer('owner_id')->unsigned();
             $table->integer('property_status_id')->unsigned();
             $table->integer('property_type_id')->unsigned();
+            $table->integer('city_id')->unsigned();
 
 
             $table->foreign('owner_id')->references('id')->on('customers');
             $table->foreign('property_status_id')->references('id')->on('property_states');
             $table->foreign('property_type_id')->references('id')->on('property_types');
+            $table->foreign('city_id')->references('id')->on('city');
 
             $table->timestamps();
         });

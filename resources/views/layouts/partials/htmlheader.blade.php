@@ -18,6 +18,8 @@
     <!-- iCheck -->
     <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
 
+    <!-- Chosen -->
+    <link href="{{ asset('/plugins/chosen/chosen.min.css') }}" rel="stylesheet" type="text/css" />
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

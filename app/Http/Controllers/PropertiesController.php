@@ -9,6 +9,7 @@ use App\Property;
 use App\PropertyType;
 use App\PropertyStatus;
 use App\State;
+use App\Tag;
 
 class PropertiesController extends Controller
 {
@@ -32,7 +33,7 @@ class PropertiesController extends Controller
         $propertyTypes = PropertyType::pluck('name','id');
         $propertyStates = PropertyStatus::pluck('name','id');
         $states = State::pluck('name','id');
-
+        $tags = Tag::pluck('name','id');
 
 
         $config = array();
@@ -66,11 +67,22 @@ class PropertiesController extends Controller
             'propertyTypes' => $propertyTypes,
             'propertyStates' => $propertyStates,
             'states' => $states,
+            'tags' => $tags,
             'map' => $map,
         ];
 
 
         return view('Properties.create',$data);
+    }
+
+
+    public function store(Request $request){
+
+        //$PropertyType = new PropertyType($request->all());
+        //$PropertyType->save();
+
+        flash('Inmueble Creado.', 'info')->important();
+        return redirect()->route('Properties.index');
     }
 
 

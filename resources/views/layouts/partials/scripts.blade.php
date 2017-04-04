@@ -7,6 +7,11 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 
+<!-- Mis pluging -->
+<script src="{{ asset('/plugins/chose/chosen.jquery.min.js') }}"></script>
+
+
+
 <!-- Sales -->
 <script src="{{ asset('/js/sales.js') }}" type="text/javascript"></script>
 

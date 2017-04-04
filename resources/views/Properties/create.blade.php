@@ -28,7 +28,7 @@
 
                     <div class="box-body">
 
-                        {!! Form::Open(['route' => 'Customers.store','method' => 'POST']) !!}
+                        {!! Form::Open(['route' => 'Properties.store','method' => 'POST']) !!}
 
                         <div class="row">
 
@@ -133,8 +133,10 @@
 
                             <!-- Segunda Columna -->
                             <div class="col-md-6">
-                                <div class="row">
-                                    tags
+                                <div class="form-group">
+                                    {!! Form::label('tags','Caracteristicas') !!}
+                                    {!! Form::select('tags[]',$tags,null,['class'=>'form-control','multiple', 'required']) !!}
+
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('state', 'Descripción') !!}
@@ -144,6 +146,10 @@
 
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
                         </div>
                         {!! Form::Close() !!}
                     </div>
