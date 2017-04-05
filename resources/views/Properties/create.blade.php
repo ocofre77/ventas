@@ -56,7 +56,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('city_id', 'Ciudad') !!}
-                                            <select id="city_id" class="select form-control" placeholder="Seleccione Ciudad"></select>
+                                            <select id="city_id" name="city_id" class="select form-control" placeholder="Seleccione Ciudad"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -98,35 +98,35 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            {!! Form::label('state', 'Area') !!}
-                                            {!! Form::text('state',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
+                                            {!! Form::label('area', 'Area') !!}
+                                            {!! Form::text('area',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            {!! Form::label('state', 'Area Util') !!}
-                                            {!! Form::text('state',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
+                                            {!! Form::label('useful_area', 'Area Util') !!}
+                                            {!! Form::text('useful_area',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            {!! Form::label('state', 'Estado Inmueble') !!}
-                                            {!! Form::select('propertyStatus',$propertyStates,null,['class'=>'select form-control', 'placeholder'=>'Estado Inmueble']) !!}
+                                            {!! Form::label('property_status_id', 'Estado Inmueble') !!}
+                                            {!! Form::select('property_status_id',$propertyStates,null,['class'=>'select form-control', 'placeholder'=>'Estado Inmueble']) !!}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            {!! Form::label('state', 'Precio') !!}
-                                            {!! Form::text('state',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
+                                            {!! Form::label('value', 'Precio') !!}
+                                            {!! Form::text('value',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    {!! Form::label('state', 'Propietario') !!}
-                                    {!! Form::text('state',null,['class'=>'form-control','placeholder'=>'Propietario', 'requerid' ]) !!}
+                                    {!! Form::label('owner_id', 'Propietario') !!}
+                                    {!! Form::text('owner_id',null,['class'=>'form-control','placeholder'=>'Propietario', 'requerid' ]) !!}
                                 </div>
 
                             </div>

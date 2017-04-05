@@ -33,7 +33,13 @@ class CitiesTableSeeder extends Seeder
             array('name'=> 'Tena','state_id'=>16,'created_at' => date("Y-m-d H:i:s") ),
             array('name'=> 'Francisco de Orellana','state_id'=>17,'created_at' => date("Y-m-d H:i:s") ),
             array('name'=> 'Puyo','state_id'=>18,'created_at' => date("Y-m-d H:i:s") ),
+
             array('name'=> 'Quito' ,'state_id'=>19,'created_at' => date("Y-m-d H:i:s")),
+            array('name'=> 'Sangolqui' ,'state_id'=>19,'created_at' => date("Y-m-d H:i:s")),
+            array('name'=> 'Tumbaco' ,'state_id'=>19,'created_at' => date("Y-m-d H:i:s")),
+            array('name'=> 'Conocoto' ,'state_id'=>19,'created_at' => date("Y-m-d H:i:s")),
+
+
             array('name'=> 'Santa Elena','state_id'=>20,'created_at' => date("Y-m-d H:i:s") ),
             array('name'=> 'Santo Domingo','state_id'=>21,'created_at' => date("Y-m-d H:i:s") ),
             array('name'=> 'Nueva Loja','state_id'=>22,'created_at' => date("Y-m-d H:i:s") ),

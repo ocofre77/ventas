@@ -81,6 +81,8 @@ class PropertiesController extends Controller
         //$PropertyType = new PropertyType($request->all());
         //$PropertyType->save();
 
+        dd($request->all());
+
         flash('Inmueble Creado.', 'info')->important();
         return redirect()->route('Properties.index');
     }
