@@ -13,9 +13,9 @@ class Property extends Model
         'area',
         'useful_area',
         'bedrooms',
-        'badrooms',
+        'bathrooms',
         'value',
-        'aliguot',
+        'city_id',
         'owner_id',
         'property_status_id',
         'property_type_id'

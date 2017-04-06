@@ -37,12 +37,12 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('name', 'Código') !!}
-                                            {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Código', 'requerid' ]) !!}
+                                            {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Código', 'required','autocomplete'=>'off' ]) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         {!! Form::label('name', 'Tipo de Propiedad') !!}
-                                        {!! Form::select('propertyType',$propertyTypes,null,['class'=>'select form-control', 'placeholder'=>'Tipo de Propiedad']) !!}
+                                        {!! Form::select('propertyType',$propertyTypes,null,['class'=>'select form-control','required', 'placeholder'=>'Tipo de Propiedad']) !!}
                                     </div>
                                 </div>
 
@@ -50,13 +50,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('state_id', 'Provincia') !!}
-                                            {!! Form::select('state_id',$states,null,['class'=>'select form-control', 'placeholder'=>'Seleccione Provincia']) !!}
+                                            {!! Form::select('state_id',$states,null,['class'=>'select form-control','required', 'placeholder'=>'Seleccione Provincia']) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('city_id', 'Ciudad') !!}
-                                            <select id="city_id" name="city_id" class="select form-control" placeholder="Seleccione Ciudad"></select>
+                                            <select id="city_id" name="city_id" required='required' class="select form-control" placeholder="Seleccione Ciudad"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -65,61 +65,59 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             {!! Form::label('address', 'Dirección') !!}
-                                            {!! Form::text('address',null,['class'=>'form-control','placeholder'=>'Ingrese la dirección', 'requerid' ]) !!}
+                                            {!! Form::text('address',null,['class'=>'form-control','placeholder'=>'Ingrese la dirección', 'required' ]) !!}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             {!! Form::label('bedrooms', 'Habitaciones') !!}
                                             <div class="input-group">
                                                     <span class="input-group-addon" id="sizing-addon2">
                                                         <i class="fa fa-bed" aria-hidden="true"></i>
                                                     </span>
-                                                {!! Form::number('bedrooms',null,['class'=>'form-control','placeholder'=>'0', 'min'=>'0', 'max'=>'20' ]) !!}
+                                                {!! Form::number('bedrooms',null,['class'=>'form-control','required' ,'placeholder'=>'0', 'min'=>'0', 'max'=>'20' ]) !!}
                                             </div>
 
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             {!! Form::label('bathrooms', 'Baños') !!}
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="sizing-addon2">
                                                     <i class="fa fa-bath" aria-hidden="true"></i>
                                                 </span>
-                                                {!! Form::number('bathrooms',null,['class'=>'form-control','placeholder'=>'0', 'min'=>'0', 'max'=>'10', 'maxlength'=>'2' ]) !!}
+                                                {!! Form::number('bathrooms',null,['class'=>'form-control','required','placeholder'=>'0', 'min'=>'0', 'max'=>'10', 'maxlength'=>'2' ]) !!}
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             {!! Form::label('area', 'Area') !!}
-                                            {!! Form::text('area',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
+                                            {!! Form::text('area',null,['class'=>'form-control','placeholder'=>'0.00', 'required' ]) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             {!! Form::label('useful_area', 'Area Util') !!}
-                                            {!! Form::text('useful_area',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
+                                            {!! Form::text('useful_area',null,['class'=>'form-control','placeholder'=>'0.00', 'required' ]) !!}
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('property_status_id', 'Estado Inmueble') !!}
                                             {!! Form::select('property_status_id',$propertyStates,null,['class'=>'select form-control', 'placeholder'=>'Estado Inmueble']) !!}
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('value', 'Precio') !!}
-                                            {!! Form::text('value',null,['class'=>'form-control','placeholder'=>'Provincia', 'requerid' ]) !!}
+                                            {!! Form::text('value',null,['class'=>'form-control','placeholder'=>'0.00', 'requerid' ]) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +133,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('tags','Caracteristicas') !!}
-                                    {!! Form::select('tags[]',$tags,null,['class'=>'form-control','multiple', 'required']) !!}
+                                    {!! Form::select('tags[]',$tags,null,['class'=>'form-control chosen-select','multiple', 'required']) !!}
 
                                 </div>
                                 <div class="form-group">
@@ -158,5 +156,15 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('js')
+
+    <script>
+        $(".chosen-select").chosen({
+
+        });
+    </script>
 
 @endsection

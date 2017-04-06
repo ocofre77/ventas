@@ -8,7 +8,7 @@
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 
 <!-- Mis pluging -->
-<script src="{{ asset('/plugins/chose/chosen.jquery.min.js') }}"></script>
+<script src="{{ asset('/plugins/chosen/chosen.jquery.min.js') }}"></script>
 
 
 
@@ -20,3 +20,5 @@
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
       fixed layout. -->
+
+@yield('js')
