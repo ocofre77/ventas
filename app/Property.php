@@ -15,6 +15,7 @@ class Property extends Model
         'bedrooms',
         'bathrooms',
         'value',
+        'notes',
         'city_id',
         'owner_id',
         'property_status_id',

@@ -78,10 +78,20 @@ class PropertiesController extends Controller
 
     public function store(Request $request){
 
-        //$PropertyType = new PropertyType($request->all());
-        //$PropertyType->save();
 
-        dd($request->all());
+
+        $property = new Property($request->all());
+
+        if( $property->owner_id == ""){
+            $property->owner_id = null;
+        }
+
+        dd($property);
+
+
+        $property ->save();
+
+
 
         flash('Inmueble Creado.', 'info')->important();
         return redirect()->route('Properties.index');

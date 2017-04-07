@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         {!! Form::label('name', 'Tipo de Propiedad') !!}
-                                        {!! Form::select('propertyType',$propertyTypes,null,['class'=>'select form-control','required', 'placeholder'=>'Tipo de Propiedad']) !!}
+                                        {!! Form::select('property_type_id',$propertyTypes,null,['class'=>'select form-control','required', 'placeholder'=>'Tipo de Propiedad']) !!}
                                     </div>
                                 </div>
 
@@ -117,7 +117,17 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {!! Form::label('value', 'Precio') !!}
-                                            {!! Form::text('value',null,['class'=>'form-control','placeholder'=>'0.00', 'requerid' ]) !!}
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="sizing-addon2">
+                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                </span>
+                                                {!! Form::text('value',null,['class'=>'form-control','placeholder'=>'0.00', 'requerid' ]) !!}
+                                            </div>
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -137,17 +147,17 @@
 
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('state', 'Descripción') !!}
+                                    {!! Form::label('notes', 'Descripción') !!}
                                     {!! Form::textarea('notes', null, ['class'=>'form-control', 'requerid'] ) !!}
                                 </div>
                                 <div class="form-group">
-
+                                    {!!$map['html']!!}
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
+                            {!! Form::submit('Registrar',['class'=>'btn btn-primary', 'rows'=>3]) !!}
                         </div>
                         {!! Form::Close() !!}
                     </div>
@@ -160,6 +170,10 @@
 @endsection
 
 @section('js')
+
+    <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC6cyYgw-z3t0t6hnTNPXyv27QsfHHprxU"></script>
+
 
     <script>
         $(".chosen-select").chosen({

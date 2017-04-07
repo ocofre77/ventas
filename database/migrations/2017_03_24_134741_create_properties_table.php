@@ -21,6 +21,8 @@ class CreatePropertiesTable extends Migration
             $table->integer('bedrooms');
             $table->integer('bathrooms');
             $table->decimal('value',10,2);
+            $table->string('notes',250);
+
             $table->integer('city_id')->unsigned();
             $table->integer('property_status_id')->unsigned();
             $table->integer('property_type_id')->unsigned();
@@ -29,7 +31,7 @@ class CreatePropertiesTable extends Migration
             $table->foreign('owner_id')->references('id')->on('customers');
             $table->foreign('property_status_id')->references('id')->on('property_states');
             $table->foreign('property_type_id')->references('id')->on('property_types');
-            $table->foreign('city_id')->references('id')->on('city');
+            $table->foreign('city_id')->references('id')->on('cities');
 
             $table->timestamps();
         });
