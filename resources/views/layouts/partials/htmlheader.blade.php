@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title> AdminLTE 2 with Laravel - @yield('htmlheader_title', 'Your title here') </title>
+    <title> Conalgi - @yield('htmlheader_title', 'Your title here') </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
@@ -20,6 +20,7 @@
 
     <!-- Chosen -->
     <link href="{{ asset('/plugins/chosen/chosen.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/funnel.css') }}" rel="stylesheet" type="text/css" />
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

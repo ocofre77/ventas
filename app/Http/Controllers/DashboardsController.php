@@ -23,4 +23,9 @@ class DashboardsController extends Controller
         return view('Dashboards.DashboardProperty');
     }
 
+    public function marketing()
+    {
+        return view('Customers.marketing');
+    }
+
 }

@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Crear Contacto</h3>
+                        <h3 class="box-title">Editar Contacto - {{ $customer->name }}</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -75,7 +75,7 @@
                                     {!! Form::label('cell_phone', 'Celular') !!}
                                     <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2">
-                                            <i class="fa fa-phone"></i>
+                                            <i class="fa fa-mobile"></i>
                                         </span>
                                         {!! Form::text('cell_phone',$customer->cell_phone,['class'=>'form-control','placeholder'=>'Celular', 'requerid' ]) !!}
                                     </div>
@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
+                            {!! Form::submit('Editar',['class'=>'btn btn-primary']) !!}
                         </div>
 
                         {!! Form::Close() !!}

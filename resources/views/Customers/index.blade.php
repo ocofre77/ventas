@@ -40,6 +40,8 @@
                                 <td>ID</td>
                                 <td>Nombre</td>
                                 <td>Email</td>
+                                <td>Teléfono</td>
+                                <td>Celular</td>
                                 <td>Tipo</td>
                                 <td>Acción</td>
                                 </thead>
@@ -49,12 +51,19 @@
                                         <td>{{ $customer->id }}</td>
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->email  }}</td>
+                                        <td>{{ $customer->phone }}</td>
+                                        <td>{{ $customer->cell_phone }}</td>
                                         <td>{{ $customer->customerType->name }}</td>
                                         <td>
                                             <a href="{{ route('Customers.edit', $customer->id )}}" type="button" class="btn btn-warning">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                                             <a href="{{ route('Customers.destroy', $customer->id )}}" type="button" onclick="return confirm('Seguro en Eliminar?')" class="btn btn-danger">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> Borrar</a>
+                                            <a href="{{ route('Trackings.create', $customer->id )}}" type="button" class="btn btn-danger">
+                                                <i class="fa fa-home" aria-hidden="true"></i> Borrar</a>
+
+
+
                                         </td>
                                     </tr>
                                 @endforeach

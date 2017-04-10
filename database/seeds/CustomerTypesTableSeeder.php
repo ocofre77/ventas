@@ -16,8 +16,9 @@ class CustomerTypesTableSeeder extends Seeder
 
         $types = array(
 
-            array('name'=> 'Ambato', 'created_at' => date("Y-m-d H:i:s")),
-            array('name'=> 'Zamora', 'created_at' => date("Y-m-d H:i:s") )
+            array('name'=> 'Prospecto', 'created_at' => date("Y-m-d H:i:s")),
+            array('name'=> 'Cliente', 'created_at' => date("Y-m-d H:i:s")),
+            array('name'=> 'Propietario', 'created_at' => date("Y-m-d H:i:s") )
 
         );
 

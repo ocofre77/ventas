@@ -28,7 +28,7 @@
 
                     <div class="box-body">
 
-                        {!! Form::Open(['route' => 'Properties.store','method' => 'POST']) !!}
+                        {!! Form::Open(['route' => 'Properties.store','method' => 'POST','files'=> true]) !!}
 
                         <div class="row">
 
@@ -150,8 +150,16 @@
                                     {!! Form::label('notes', 'Descripción') !!}
                                     {!! Form::textarea('notes', null, ['class'=>'form-control', 'requerid'] ) !!}
                                 </div>
+
                                 <div class="form-group">
+                                    {!! Form::label('image', 'Imagen') !!}
+                                    {!! Form::file('image') !!}
+                                </div>
+
+                                <div class="form-group">
+                              <!--
                                     {!!$map['html']!!}
+                              -->
                                 </div>
                             </div>
                         </div>
@@ -172,7 +180,7 @@
 @section('js')
 
     <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC6cyYgw-z3t0t6hnTNPXyv27QsfHHprxU"></script>
+
 
 
     <script>

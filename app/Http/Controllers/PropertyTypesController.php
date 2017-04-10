@@ -28,7 +28,7 @@ class PropertyTypesController extends Controller
      */
     public function index()
     {
-        $propertyTypes = PropertyType::paginate(2);//orderBy('id','desc');
+        $propertyTypes = PropertyType::paginate(5);//orderBy('id','desc');
         return view('PropertyTypes.index')->with('propertyTypes',$propertyTypes);
     }
 

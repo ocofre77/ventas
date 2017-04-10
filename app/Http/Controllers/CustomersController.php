@@ -63,7 +63,8 @@ class CustomersController extends Controller
     public function update(Request $request, $id)
     {
         $customer = Customer::find($id);
-        $customer->name = $request->name;
+        //$customer->name = $request->name;
+        $customer->fill($request->all());
         $customer->save();
 
         flash('Contacto Actualizado.', 'info')->important();

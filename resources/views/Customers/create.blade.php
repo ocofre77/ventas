@@ -73,7 +73,7 @@
                                     {!! Form::label('cell_phone', 'Celular') !!}
                                     <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2">
-                                            <i class="fa fa-phone"></i>
+                                            <i class="fa fa-mobile"></i>
                                         </span>
                                         {!! Form::text('cell_phone',null,['class'=>'form-control','placeholder'=>'Celular', 'requerid' ]) !!}
                                     </div>

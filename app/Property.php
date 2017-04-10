@@ -15,6 +15,7 @@ class Property extends Model
         'bedrooms',
         'bathrooms',
         'value',
+        'address',
         'notes',
         'city_id',
         'owner_id',
@@ -22,13 +23,24 @@ class Property extends Model
         'property_type_id'
     ];
 
+    /*
+    function owner(){
+        return $this->hasOne('App\Customer','owner_id');
+    }
+*/
     function tags(){
-        return $this->belongsMany('App\Tag');
+        return $this->belongsToMany('App\Tag');
     }
 
     function images(){
         return $this->hasMany('App\Image');
     }
 
+    function  propertyType(){
+        return $this->belongsTo('App\PropertyType');
+    }
 
+    function city(){
+        return $this->belongsTo('App\City');
+    }
 }

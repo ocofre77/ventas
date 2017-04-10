@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,6 +11,9 @@ use App\PropertyType;
 use App\PropertyStatus;
 use App\State;
 use App\Tag;
+use Illuminate\Support\Facades\DB;
+use League\Flysystem\Exception;
+use Laracasts\Flash\Flash;
 
 class PropertiesController extends Controller
 {
@@ -78,24 +82,82 @@ class PropertiesController extends Controller
 
     public function store(Request $request){
 
-
-
         $property = new Property($request->all());
+        $property->owner_id = null;
 
-        if( $property->owner_id == ""){
-            $property->owner_id = null;
+        DB::beginTransaction();
+        try{
+            $property ->save();
+
+            //Manipulación de Imágenes
+            if($request->file('image')){
+                $file = $request->file('image');
+                $name = 'property'.time().'.'.$file->getClientOriginalExtension();
+                $path = public_path().'images/galery/';
+                $file->move($path,$name);
+
+                $image = new Image();
+                $image->name = $name;
+                $image->property()->associate($property);
+                $image->save();
+            }
+
+
+
+            $property->tags()->sync($request->tags);
+            flash('Inmueble Creado.', 'info')->important();
         }
-
-        dd($property);
-
-
-        $property ->save();
-
-
-
-        flash('Inmueble Creado.', 'info')->important();
+        catch(Exception $ex)
+        {
+            DB::rollBack();
+            flash('Inmueble Creado.', 'info')->important();
+        }
+        DB::commit();
         return redirect()->route('Properties.index');
     }
 
+
+    public function edit($id)
+    {
+        $propertyTypes = PropertyType::pluck('name','id');
+        $propertyStates = PropertyStatus::pluck('name','id');
+        $states = State::pluck('name','id');
+        $tags = Tag::pluck('name','id');
+
+
+        $property = Property::find($id);
+        $my_tags = $property->tags->lists('id')->ToArray();
+
+        $data = [
+            'propertyTypes' => $propertyTypes,
+            'propertyStates' => $propertyStates,
+            'states' => $states,
+            'tags' => $tags,
+            'property' => $property,
+            'my_tags'=>$my_tags,
+
+        ];
+
+        return view('Properties.edit',$data);
+        //dd($customer);
+        //return view('Customers.edit')->with('Customers',$customer);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $property = Property::find($id);
+        $property->fill($request->all());
+        $property->address = $request->address;
+        $property->owner_id = null;
+        $property->save();
+        $property->tags()->sync($request->tags);
+
+
+
+        flash('Inmueble Actualizado.', 'info')->important();
+
+        return redirect()->route('Properties.index');
+
+    }
 
 }

@@ -34,12 +34,13 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/Dashboard1', 'DashboardsController@admin');
 	Route::get('/Dashboard2', 'DashboardsController@sales');
 	Route::get('/Dashboard3', 'DashboardsController@properties');
-
+	Route::get('/Marketing', 'DashboardsController@marketing');
 
     Route::resource('PropertyStates','PropertyStatesController');
 	Route::resource('PropertyTypes','PropertyTypesController');
 	Route::resource('Customers','CustomersController');
 	Route::resource('Properties','PropertiesController');
+	Route::resource('Trackings','TrackingsController');
 
 	Route::get('cities/{id}', [
 		'uses' => 'StatesController@getCities',
@@ -65,6 +66,7 @@ Route::group(['middleware' => 'web'], function () {
 			'as' => 'Customers.destroy'
 		]
 	);
+
 
 
 
