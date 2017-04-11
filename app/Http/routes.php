@@ -67,7 +67,11 @@ Route::group(['middleware' => 'web'], function () {
 		]
 	);
 
-
+	Route::get('/Trackings/{id}/create', [
+					'uses' => 'TrackingsController@create',
+					'as' => 'Trackings.create'
+			]
+	);
 
 
 });

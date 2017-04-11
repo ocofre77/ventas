@@ -59,8 +59,8 @@
                                                 <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                                             <a href="{{ route('Customers.destroy', $customer->id )}}" type="button" onclick="return confirm('Seguro en Eliminar?')" class="btn btn-danger">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> Borrar</a>
-                                            <a href="{{ route('Trackings.create', $customer->id )}}" type="button" class="btn btn-danger">
-                                                <i class="fa fa-home" aria-hidden="true"></i> Borrar</a>
+                                            <a href="{{ route('Trackings.create', $customer->id )}}" type="button" class="btn btn-info">
+                                                <i class="fa fa-home" aria-hidden="true"></i> Oferta</a>
 
 
 

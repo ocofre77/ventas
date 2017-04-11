@@ -9,7 +9,7 @@ class Tracking extends Model
     protected $table = "trackings";
 
     protected $fillable = [
-        'name',
+
         'bedrooms_min',
         'bedrooms_max',
         'bathrooms_min',
@@ -17,10 +17,20 @@ class Tracking extends Model
         'area_min',
         'area_max',
         'value_min',
-        'value_max'];
+        'value_max',
+        'contact_id',
+        'property_type_id',
+        'business_status_id'
+    ];
+
+
 
     public function tasks(){
         return $this->hasMany('App\Task');
+    }
+
+    function tags(){
+        return $this->belongsToMany('App\Tag','tracking_tag');
     }
 
     public function properties(){
