@@ -93,7 +93,7 @@ class PropertiesController extends Controller
             if($request->file('image')){
                 $file = $request->file('image');
                 $name = 'property'.time().'.'.$file->getClientOriginalExtension();
-                $path = public_path().'images/galery/';
+                $path = public_path().'/images/galery/';
                 $file->move($path,$name);
 
                 $image = new Image();

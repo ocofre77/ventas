@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -42,11 +42,15 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('Properties','PropertiesController');
 	Route::resource('Trackings','TrackingsController');
 
+
+
 	Route::get('cities/{id}', [
 		'uses' => 'StatesController@getCities',
 		'as' => 'States.getCities'
 		]
 	);
+
+
 
 
 	Route::get('/PropertyStatus/{id}/destroy', [

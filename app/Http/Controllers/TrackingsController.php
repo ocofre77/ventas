@@ -46,6 +46,7 @@ class TrackingsController extends Controller
     {
 
             $tracking = new Tracking($request->all());
+        $tracking->user_id = \Auth::user()->id;
 
                 $tracking->save();
         //dd($tracking->tags());

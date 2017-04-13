@@ -20,10 +20,13 @@ class Tracking extends Model
         'value_max',
         'contact_id',
         'property_type_id',
-        'business_status_id'
+        'business_status_id',
+        'user_id',
     ];
 
-
+    function  user(){
+        return $this->belongsTo('App\User');
+    }
 
     public function tasks(){
         return $this->hasMany('App\Task');

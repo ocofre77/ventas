@@ -59,4 +59,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $this->save();
     }
 
+    function properties(){
+        return $this->hasMany('App\Tracking');
+    }
+
 }
