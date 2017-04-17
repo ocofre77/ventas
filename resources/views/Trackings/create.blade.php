@@ -74,11 +74,13 @@
 
 @section('main-content')
     <div class="container-fluid spark-screen">
-        <div class="row">
+                <div class="row">
 
-            <div class="col-md-3">
-                @include('Trackings.partials.tasks')
-            </div>
+                    <div class="col-md-3">
+                        @include('Trackings.partials.tasks')
+                        @include('Trackings.partials.modalTask')
+
+                    </div>
 
             <div class="col-md-4">
                 <h4 style="padding-left:5px;">Intereses</h4>
@@ -178,4 +180,40 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        //Date picker
+        $('#date').datepicker({
+            autoclose: true
+        });
+
+
+        //Timepicker
+        /*
+        $(".timepicker").timepicker({
+            showInputs: true
+        });
+        */
+
+        $('#hour_from').timepicker('setTime', new Date());
+        $('#hour_to').timepicker('setTime', new Date());
+
+
+/*
+         $('#timepicker4').timepicker({
+         minuteStep: 1,
+         secondStep: 5,
+         showInputs: false,
+         template: 'modal',
+         modalBackdrop: true,
+         showSeconds: true,
+         showMeridian: false,
+         step:15,
+         });
+*/
+
+
+    </script>
 @endsection

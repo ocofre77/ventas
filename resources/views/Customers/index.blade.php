@@ -64,6 +64,10 @@
                                             <a href="{{ route('Trackings.create', $customer->id )}}" type="button" class="btn btn-info">
                                                 <i class="fa fa-home" aria-hidden="true"></i> Oferta</a>
 
+{{--
+                                            <a href="{{ route('Trackings.edit', $customer->id )}}" type="button" class="btn btn-info">
+                                                <i class="fa fa-home" aria-hidden="true"></i> Oferta</a>
+--}}
 
 
                                         </td>

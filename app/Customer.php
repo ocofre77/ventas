@@ -16,7 +16,14 @@ class Customer extends Model
         'address',
         'city',
         'customer_type_id',
+        'user_id',
+
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
 
     public function customerType()

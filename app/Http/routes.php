@@ -29,7 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
-	Route::get('/home', 'HomeController@index');
+//	Route::get('/home', 'HomeController@index');
+	Route::get('/home', 'DashboardsController@properties');
+
 
 	Route::get('/Dashboard1', 'DashboardsController@admin');
 	Route::get('/Dashboard2', 'DashboardsController@sales');
@@ -41,7 +43,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('Customers','CustomersController');
 	Route::resource('Properties','PropertiesController');
 	Route::resource('Trackings','TrackingsController');
-
+	Route::resource('Tasks','TasksController');
 
 
 	Route::get('cities/{id}', [

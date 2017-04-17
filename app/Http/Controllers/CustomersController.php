@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\CustomerType;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Laracasts\Flash\Flash;
 
 class CustomersController extends Controller
 {
     public function index()
     {
+        //Usuario autenticado
+        $userId = \Auth::user()->id;
+
         $customerTypes = CustomerType::all();
-        $customers = Customer::all();//::paginate(2);//orderBy('id','desc');
+        $customers = Customer::where('user_id',$userId)->paginate(5);//orderBy('id','desc');
+
+        //dd($customers);
 
         $data = [
             'customerTypes' => $customerTypes,
@@ -37,6 +42,8 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         $customer = new Customer($request->all());
+        $customer->user_id = \Auth::user()->id;
+
         $customer->save();
 
         flash('Contacto Creado.', 'info')->important();

@@ -4,6 +4,17 @@
 <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+
+<!-- bootstrap datepicker -->
+<script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+<!-- bootstrap time picker -->
+{{--<script src="{{ asset('/plugins/timepicker/bootstrap-timepicker.js') }}"></script>--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+
+<!-- select2 -->
+<script src="{{ asset('/plugins/select2/select2.min.js') }}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 

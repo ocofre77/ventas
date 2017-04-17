@@ -102,10 +102,11 @@
         <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center form-div">
         <div class="login-box">
             <div class="login-logo">
+                <!--
                 <a href="{{ url('/home') }}"><b>Conal</b>gi</a>
+                -->
 
-
-                <img scr="/img/backgrounds/conalgi.gif" height="42" width="42" />
+                <img src="/img/backgrounds/conalgi.gif" height="100" width="220" />
 
 
             </div><!-- /.login-logo -->
@@ -155,7 +156,7 @@
     </div><!-- /.login-box -->
         </div>
         <div class="col-lg-6 hidden-md hidden-sm hidden-xs background-div"
-             style='background-image: url("/img/backgrounds/42.jpg");'>
+             >
         </div>
     </div>
 </div>
@@ -163,6 +164,24 @@
 
     <script>
         $(function () {
+
+            var backgroundArray = [
+                "/img/backgrounds/2.jpg",
+                "/img/backgrounds/1.jpg",
+                "/img/backgrounds/3.jpg",
+                "/img/backgrounds/4.jpg",
+                "/img/backgrounds/5.jpg",
+                "/img/backgrounds/6.jpg",
+                "/img/backgrounds/7.jpg",
+                "/img/backgrounds/8.jpg",
+                "/img/backgrounds/9.jpg",
+
+            ];
+            var backgroundImg = backgroundArray[Math.floor(Math.random() * backgroundArray.length)];
+
+            $('.background-div').css('background-image', 'url(' + backgroundImg + ')');
+
+
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-blue',
                 radioClass: 'iradio_square-blue',

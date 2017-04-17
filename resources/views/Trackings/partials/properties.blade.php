@@ -8,9 +8,6 @@
 <div style="margin-top:20px;">
     <i class="fa fa-thumbs-up"></i> INMUEBLES FAVORITOS
 
-    <!--
-    {{ route('Trackings.addProperty', $customer->id )}}
-    -->
     <a class="btn btn-primary pull-right btn-xs" style="margin-top:-5px;"
        href="#" >
         <i class="glyphicon glyphicon-plus"></i>

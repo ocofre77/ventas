@@ -133,7 +133,7 @@
 
                                 <div class="form-group">
                                     {!! Form::label('owner_id', 'Propietario') !!}
-                                    {!! Form::text('owner_id',null,['class'=>'form-control','placeholder'=>'Propietario', 'requerid' ]) !!}
+                                    {!! Form::text('owner_id',$property->owner_id,['class'=>'form-control','placeholder'=>'Propietario', 'requerid' ]) !!}
                                 </div>
 
                             </div>

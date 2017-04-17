@@ -74,6 +74,17 @@
                 </ul>
             </li>
 
+            <li class="treeview">
+                <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{url('Customers')}}">Ventas</a></li>
+                    <li><a href="{{ url('Marketing') }}">Comericialización</a></li>
+                    <li><a href="#">Propietarios</a></li>
+                </ul>
+
+            </li>
+
 
             <li class="treeview">
                 <a href="#"><i class="fa fa-lock" aria-hidden="true"></i>

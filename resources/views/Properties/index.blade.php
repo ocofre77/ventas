@@ -33,7 +33,7 @@
 					</div>
 				</div>
 
-                <div class="form-group">
+{{--                <div class="form-group">
 
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -47,9 +47,10 @@
                         </ul>
                       </div>
 
-                </div>
+                </div>--}}
 
 
+{{--
 				<div class="form-group">
 
 				{!! Form::label('name', 'Estado de la Propiedad') !!}
@@ -61,11 +62,16 @@
 				<div class="form-group">
 				{!! Form::submit('Actualizar',['class'=>'btn btn-primary']) !!}
 				</div>
+--}}
+
 			</div>
+{{--
 			<p class="text-center">
 				<a href="/pro/agencies/houses/list/?advanced=True">Búsqueda avanzada</a>
 			</p>
+
 			<hr style="margin:15px;">
+--}}
 
           <div class="box-body">
             <div class="row">
