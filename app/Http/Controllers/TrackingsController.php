@@ -44,6 +44,7 @@ class TrackingsController extends Controller
 
         $data = [
             'propertyTypes' => $propertyTypes,
+            'tracking' => null,
             'tags'=> $tags,
             'businessStatus'=> $businessStatus,
             'taskTypes' => $taskTypes,
@@ -84,9 +85,11 @@ class TrackingsController extends Controller
 
     }
 
+
+
+
     public function store(Request $request)
     {
-
         $tracking = new Tracking($request->all());
         $tracking->user_id = \Auth::user()->id;
 

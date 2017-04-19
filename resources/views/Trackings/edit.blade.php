@@ -79,7 +79,6 @@
             <div class="col-md-3">
                 @include('Trackings.partials.tasks')
                 @include('Trackings.partials.modalTask')
-
             </div>
 
             <div class="col-md-4">
@@ -186,6 +185,7 @@
     <script>
         //Date picker
         $('#date').datepicker({
+            format: 'dd/mm/yyyy',
             autoclose: true
         });
 
@@ -193,5 +193,32 @@
         $(".timepicker").timepicker({
             showInputs: true
         });
+
+        // add function
+        $("#add").click(function() {
+            $.ajax({
+                type: 'post',
+                url: '/addItem',
+                data: {
+                    '_token': $('input[name=_token]').val(),
+                    'title': $('input[name=title]').val(),
+                    'description': $('input[name=description]').val()
+                },
+                success: function(data) {
+                    if ((data.errors)) {
+                        $('.error').removeClass('hidden');
+                        $('.error').text(data.errors.title);
+                        $('.error').text(data.errors.description);
+                    } else {
+                        $('.error').remove();
+                        $('#table').append("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.title + "</td><td>" + data.description + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-title='" + data.title + "' data-description='" + data.description + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-title='" + data.title + "' data-description='" + data.description + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
+                    }
+                },
+            });
+            $('#title').val('');
+            $('#description').val('');
+        });
+
+
     </script>
 @endsection

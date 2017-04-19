@@ -1,4 +1,3 @@
-
 <h4 style="padding-left:5px;">Inmuebles</h4>
 
 <div class="form-group">
@@ -13,8 +12,6 @@
         <i class="glyphicon glyphicon-plus"></i>
         Agregar inmueble
     </a>
-
-
 
 </div>
 
@@ -44,11 +41,12 @@
             Madrid,
             130 m<sup>2</sup>
         </a><br>
-        <span class="label label-default">EJEMPLO</span>
-
-                            <span class="label label-primary" style="margin-right:2px;">
-                              150.000 €
-                            </span>
+        <span class="label label-default">
+            EJEMPLO
+        </span>
+        <span class="label label-primary" style="margin-right:2px;">
+          150.000 €
+        </span>
 
         <div class="btn-group" style="position: absolute; left: 100px; bottom: 9px; ">
             orlando cofre

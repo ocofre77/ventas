@@ -4,7 +4,7 @@
         <li>
             <i class="fa fa-plus"></i>
             <div class="timeline-item" style="width:0;">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                <button id="btmAddTask" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                      Agregar
                 </button>

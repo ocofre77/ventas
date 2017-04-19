@@ -78,8 +78,6 @@
 
                     <div class="col-md-3">
                         @include('Trackings.partials.tasks')
-                        @include('Trackings.partials.modalTask')
-
                     </div>
 
             <div class="col-md-4">
@@ -200,6 +198,14 @@
         $('#hour_from').timepicker('setTime', new Date());
         $('#hour_to').timepicker('setTime', new Date());
 
+
+        $('#btmAddTask').addClass('disabled');
+        $('#btmAddTask').removeAttr('data-toggle');
+
+        /*
+        $('#btmAddTask').removeClass('disabled');
+        $('#btmAddTask').attr("data-toggle", "modal");
+*/
 
 /*
          $('#timepicker4').timepicker({

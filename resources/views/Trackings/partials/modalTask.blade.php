@@ -17,7 +17,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            {!! Form::text('date', \Carbon\Carbon::now(),['class'=>' form-control pull-righ']) !!}
+                            {!! Form::text('date', \Carbon\Carbon::now()->format('d/m/Y'),['class'=>' form-control pull-righ']) !!}
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -56,6 +56,8 @@
                         {!! Form::textarea('notes', null,['class'=>'form-control','size' => '30x3']) !!}
                     </div>
                 </div>
+
+                {!! Form::hidden('tracking_id', ($tracking == null ? 0 : $tracking->id)  ) !!}
 
             </div>
             <div class="modal-footer">

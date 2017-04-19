@@ -109,6 +109,8 @@
                 <img src="/img/backgrounds/conalgi.gif" height="100" width="220" />
 
 
+
+
             </div><!-- /.login-logo -->
 
         @if (count($errors) > 0)

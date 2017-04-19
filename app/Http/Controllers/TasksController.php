@@ -10,12 +10,14 @@ class TasksController extends Controller
 {
     public function store(Request $request)
     {
-        //dd($request->all());
         $task = new Task($request->all());
-        dd($task );
-        //$task->save();
 
-        flash('Tipo de Propiedad Creado.', 'info')->important();
-        return redirect()->route('PropertyTypes.index');
+        //dd($task);
+
+        $task->save();
+        //flash('Tipo de Propiedad Creado.', 'info')->important();
+        //return redirect()->route('Trackings.edit');
+
+        return response()->json($task);
     }
 }
