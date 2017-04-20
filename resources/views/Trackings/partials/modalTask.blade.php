@@ -7,7 +7,9 @@
                                <h4 class="modal-title">Modal Header</h4>
                            </div>
             -->
-            {!! Form::Open(['route' => 'Tasks.store','method' => 'POST']) !!}
+
+            {{--{!! Form::Open(['route' => 'Tasks.store','method' => 'POST']) !!}--}}
+
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4">
@@ -61,11 +63,12 @@
 
             </div>
             <div class="modal-footer">
-                {!! Form::submit('Agregar Tarea',['class'=>'btn btn-primary']) !!}
+                {{--{!! Form::submit('Agregar Tarea',['class'=>'btn btn-primary']) !!}--}}
+                <button type="button" class="btn btn-primary" id="addTask"  data-dismiss="modal">Agregar Tarea</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 
             </div>
-            {!! Form::Close() !!}
+            {{--{!! Form::Close() !!}--}}
         </div>
     </div>
 </div>

@@ -12,11 +12,10 @@
         <i class="glyphicon glyphicon-plus"></i>
         Agregar inmueble
     </a>
-
 </div>
-
-
 <br>
+
+@if( $tracking != null)
 
 <div class="info-box" style="position: relative;margin:2px 0;"
      property-pic="https://witei.com/static/img/house_no_pic.jpg"
@@ -62,3 +61,4 @@
         </div>
     </div><!-- /.info-box-content -->
 </div>
+@endif

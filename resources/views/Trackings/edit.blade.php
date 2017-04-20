@@ -195,14 +195,13 @@
         });
 
         // add function
-        $("#add").click(function() {
-            $.ajax({
+        $("#addTask").click(function() {
+
+              $.ajax({
                 type: 'post',
-                url: '/addItem',
+                url: '/Tasks',
                 data: {
-                    '_token': $('input[name=_token]').val(),
-                    'title': $('input[name=title]').val(),
-                    'description': $('input[name=description]').val()
+                    'date': $('#date').val(),
                 },
                 success: function(data) {
                     if ((data.errors)) {
@@ -215,8 +214,7 @@
                     }
                 },
             });
-            $('#title').val('');
-            $('#description').val('');
+
         });
 
 

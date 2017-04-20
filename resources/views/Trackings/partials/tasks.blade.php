@@ -11,6 +11,8 @@
             </div>
         </li>
 
+        @if( $tracking != null)
+
         <li class="time-label">
           <span class="bg-gray">11 Abr. 2017</span>
         </li>
@@ -101,4 +103,7 @@
         <li>
             <i class="fa fa-clock-o bg-gray"></i>
         </li>
+
+        @endif
+
     </ul>

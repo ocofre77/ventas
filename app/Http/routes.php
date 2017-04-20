@@ -42,8 +42,8 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('PropertyTypes','PropertyTypesController');
 	Route::resource('Customers','CustomersController');
 	Route::resource('Properties','PropertiesController');
-	Route::resource('Trackings','TrackingsController');
 	Route::resource('Tasks','TasksController');
+	Route::resource('Trackings','TrackingsController');
 
 
 	Route::get('cities/{id}', [
@@ -51,7 +51,6 @@ Route::group(['middleware' => 'web'], function () {
 		'as' => 'States.getCities'
 		]
 	);
-
 
 
 
