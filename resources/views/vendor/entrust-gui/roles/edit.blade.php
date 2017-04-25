@@ -4,6 +4,11 @@
   Roles
 @endsection
 
+@section('contentheader_title')
+  Roles
+@endsection
+
+
 
 @section('main-content')
 <form action="{{ route('entrust-gui::roles.update', $model->id) }}" method="post" role="form">

@@ -25,11 +25,13 @@ class CreatePropertiesTable extends Migration
 
             $table->integer('city_id')->unsigned();
             $table->integer('property_status_id')->unsigned();
+            $table->integer('project_id')->unsigned();
             $table->integer('property_type_id')->unsigned();
             $table->integer('owner_id')->nullable()->unsigned();
 
             $table->foreign('owner_id')->references('id')->on('customers');
             $table->foreign('property_status_id')->references('id')->on('property_states');
+            $table->foreign('project_id')->references('id')->on('projects');
             $table->foreign('property_type_id')->references('id')->on('property_types');
             $table->foreign('city_id')->references('id')->on('cities');
 

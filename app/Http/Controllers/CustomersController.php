@@ -10,13 +10,13 @@ use Laracasts\Flash\Flash;
 
 class CustomersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         //Usuario autenticado
         $userId = \Auth::user()->id;
 
         $customerTypes = CustomerType::all();
-        $customers = Customer::where('user_id',$userId)->paginate(5);//orderBy('id','desc');
+        $customers = Customer::Search($request->name)->where('user_id',$userId)->paginate(5);//orderBy('id','desc');
 
         //dd($customers);
 
@@ -34,19 +34,17 @@ class CustomersController extends Controller
         $data = [
             'customerTypes' => $customerTypes,
         ];
-
         return view('Customers.create',$data);
     }
-
 
     public function store(Request $request)
     {
         $customer = new Customer($request->all());
         $customer->user_id = \Auth::user()->id;
-
         $customer->save();
 
-        flash('Contacto Creado.', 'info')->important();
+        Flash::success('Contacto Creado.');
+
         return redirect()->route('Customers.index');
     }
 
@@ -75,11 +73,11 @@ class CustomersController extends Controller
         $customer->save();
 
         flash('Contacto Actualizado.', 'info')->important();
+        Flash::success('Contacto Creado.');
+
         return redirect()->route('Customers.index');
 
     }
-
-
 
 
 }

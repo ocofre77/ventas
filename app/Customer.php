@@ -31,6 +31,10 @@ class Customer extends Model
         return $this->belongsTo('App\CustomerType');
     }
 
+    public function  scopeSearch($query,$name)
+    {
+        return $query->Where('name','LIKE',"%$name%");
+    }
 
 }
 

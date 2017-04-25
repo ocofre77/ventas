@@ -9,7 +9,7 @@ class Task extends Model
     protected $table = "tasks";
 
     protected $fillable = ['date','hour_from','hour_to',
-        'notes','property_id',
+        'notes','done','property_id',
         'tracking_id','task_type_id' ];
 
 

@@ -13,12 +13,25 @@
 @endsection
 
 @section('contentheader_controls')
-    <a href="{{url('Customers/create')}}" type="button" class="btn btn-primary">
-        <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-    </a>
+
+    {!! Form::open(['route'=>'Customers.index', 'method' =>'GET', 'class' => 'navbar-form pull-right']) !!}
+    <div class ="input-group" >
+        {!! Form::text('name',null,['class'=> 'form-control','placeholder'=>'Buscar Contacto..','aria-describedby'=>'search'])!!}
+        <span class="input-group-addon" id="search">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+    </div>
+    <div class ="input-group" >
+        <a href="{{url('Customers/create')}}" type="button" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+        </a>
+    </div>
+
+    {!! Form::close() !!}
 @endsection
 
 @section('main-content')
+
+
 
     <div class="container-fluid spark-screen">
         <div class="row">
@@ -80,7 +93,9 @@
 
 
                     </div>
-
+                    <div class="text-center">
+                        {{ $customers->links() }}
+                    </div>
                 </div>
             </div>
         </div>

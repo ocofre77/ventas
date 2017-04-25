@@ -4,6 +4,10 @@
   Permisos
 @endsection
 
+@section('contentheader_title')
+  Permisos
+@endsection
+
 
 @section('main-content')
 <form action="{{ route('entrust-gui::permissions.update', $model->id) }}" method="post" role="form">

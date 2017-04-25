@@ -28,7 +28,11 @@
 			<div class="form-inline" id="filters">
 
 				<div class="form-group">
-					<div class="controls col-xs-6 col-md-2"> 
+                  <div class="col-xs-4 col-md-2">
+                    {!! Form::select('project',$projects,null,['class'=>'select form-control', 'placeholder'=>'Proyecto']) !!}
+                  </div>
+
+					<div class="col-xs-4 col-md-offset-4">
                       {!! Form::select('propertyType',$propertyTypes,null,['class'=>'select form-control', 'placeholder'=>'Tipo de Propiedad']) !!}
 					</div>
 				</div>

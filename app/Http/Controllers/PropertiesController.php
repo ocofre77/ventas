@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Property;
+use App\Project;
 use App\PropertyType;
 use App\PropertyStatus;
 use App\State;
@@ -17,15 +18,24 @@ use Laracasts\Flash\Flash;
 
 class PropertiesController extends Controller
 {
-    //
 
+    public function getProperties(Request $request, $id){
+
+        if( $request->ajax()){
+            $properties = Property::properties($id);
+            return response()->json($properties);
+        }
+    }
     public function index()
     {
         $properties = Property::all();//orderBy('id','desc');
         $propertyTypes = PropertyType::pluck('name','id');
+        $projects = Project::pluck('name','id');
+
         $data = [
             'propertyTypes' => $propertyTypes,
             'properties' => $properties,
+            'projects' => $projects,
         ];
 
 
@@ -38,6 +48,7 @@ class PropertiesController extends Controller
         $propertyStates = PropertyStatus::pluck('name','id');
         $states = State::pluck('name','id');
         $tags = Tag::pluck('name','id');
+        $projects = Project::pluck('name','id');
 
 
         $config = array();
@@ -73,6 +84,8 @@ class PropertiesController extends Controller
             'states' => $states,
             'tags' => $tags,
             'map' => $map,
+            'projects' => $projects,
+
         ];
 
 

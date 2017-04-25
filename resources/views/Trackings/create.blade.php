@@ -195,7 +195,15 @@
         });
         */
 
-        $('#hour_from').timepicker('setTime', new Date());
+
+
+        $('#hour_from').timepicker({
+            'setTime': new Date(),
+            'minTime': '7:00am',
+            'maxTime': '7:00pm',
+            'showDuration': true
+        });
+
         $('#hour_to').timepicker('setTime', new Date());
 
 

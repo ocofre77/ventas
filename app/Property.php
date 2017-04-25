@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {
-
     protected $table="properties";
+
     protected $fillable=[
         'name',
         'area',
@@ -20,7 +20,8 @@ class Property extends Model
         'city_id',
         'owner_id',
         'property_status_id',
-        'property_type_id'
+        'property_type_id',
+        'project_id'
     ];
 
     /*
@@ -40,7 +41,15 @@ class Property extends Model
         return $this->belongsTo('App\PropertyType');
     }
 
+    function  project(){
+        return $this->belongsTo('App\Project');
+    }
+
     function city(){
         return $this->belongsTo('App\City');
+    }
+
+    public static function properties($id){
+        return Property::Where('project_id','=',$id)->get();
     }
 }

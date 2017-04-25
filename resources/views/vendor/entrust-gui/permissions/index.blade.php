@@ -4,6 +4,11 @@
     Permisos
 @endsection
 
+@section('contentheader_title')
+    Permisos
+@endsection
+
+
 
 @section('main-content')
 <div class="models--actions">

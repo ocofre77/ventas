@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\PropertyType;
+use App\Project;
 use App\Tag;
 use App\Tracking;
 use App\BusinessStatus;
@@ -15,15 +16,24 @@ use App\TaskType;
 
 class TrackingsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create($id)
     {
         $trackings = Tracking::where('contact_id',$id)->take(1)->get();
+
         $customer= Customer::find($id);
         $propertyTypes = PropertyType::pluck('name','id');
         $businessStatus = BusinessStatus::pluck('name','id');
         $taskTypes = TaskType::pluck('name','id');
 
+        $projects= Project::pluck('name','id');
         $properties= Property::pluck('name','id');
+
         //Se deben Selecionar la  propiedades que no este vendidas
         $tags = Tag::pluck('name','id');
 
@@ -38,6 +48,7 @@ class TrackingsController extends Controller
                 'properties'=> $properties,
                 'tracking' => $trackings[0],
                 'my_tags' => $my_tags,
+                'projects' => $projects
             ];
             return view('Trackings.edit',$data);
         }
@@ -50,6 +61,7 @@ class TrackingsController extends Controller
             'taskTypes' => $taskTypes,
             'customer'=> $customer,
             'properties'=> $properties,
+            'projects' => $projects,
         ];
 
         return view('Trackings.create',$data);
@@ -108,6 +120,7 @@ class TrackingsController extends Controller
         $tracking = Tracking::find($id);
         $tracking->fill($request->all());
         $tracking->save();
+
         $tracking->tags()->sync($request->tags);
 
 

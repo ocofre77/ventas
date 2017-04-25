@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->time('hour_from');
             $table->time('hour_to');
             $table->string('notes');
+            $table->boolean('done')->default(false);
 
             $table->integer('property_id')->unsigned();
             $table->integer('tracking_id')->unsigned();

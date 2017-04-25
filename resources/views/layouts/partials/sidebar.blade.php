@@ -34,7 +34,7 @@
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
 
-            <li class="active treeview">
+            <li class="{{ (((Request::is('Dashboard1') || Request::is('Dashboard2') || Request::is('Dashboard3'))) ? 'active treeview' : 'treeview')  }}" >
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -42,33 +42,36 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li {{ (Request::is('Dashboard1') ? 'class=active' : '') }}>
                         <a href="{{ url('Dashboard1') }}">
                         <i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                    <li class="active">
+                    <li  {{ (Request::is('Dashboard2') ? 'class=active' : '') }} >
                         <a href="{{ url('Dashboard2') }}">
                             <i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                    <li >
+                    <li {{ (Request::is('Dashboard3') ? 'class=active' : '') }}>
                         <a href="{{ url('Dashboard3') }}">
-                            <i class="fa fa-circle-o"></i> Dashboard v3</a></li>
+                            <i class="fa fa-circle-o"></i> Actividades</a></li>
                 </ul>
             </li>
 
 
-            <li class="treeview">
+            <li class="{{ ((Request::is('Properties') || (Request::is('Projects'))) ? 'active treeview' : 'treeview')  }}">
                 <a href="#"><i class="fa fa-home" aria-hidden="true"></i>
                     <span>Inmuebles</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('Properties')}}">Mis Inmuebles</a></li>
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
+                    <li class="{{ ((Request::is('Properties')) ? 'class=active' : '')}}">
+                        <a href="{{url('Properties')}}">Mis Inmuebles</a></li>
+                    <li class="{{ ((Request::is('Projects')) ? 'class=active' : '')}}">
+                        <a href="{{url('Projects')}}">Proyectos</a></li>
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="{{ ((Request::is('Customers') ) ? 'active treeview' : 'treeview')  }}">
                 <a href="#"><i class="fa fa-users" aria-hidden="true"></i>
                     <span>Contactos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('Customers')}}">Mis Contactos</a></li>
+                    <li class="{{ ((Request::is('Customers')) ? 'class=active' : '')}}">
+                        <a href="{{url('Customers')}}">Mis Contactos</a></li>
                     <li><a href="{{ url('Marketing') }}">Ventas</a></li>
                     <li><a href="#">Propietarios</a></li>
                 </ul>
@@ -78,7 +81,8 @@
                 <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>
                     <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('Customers')}}">Ventas</a></li>
+                    <li {{ (Request::is('Customers') ? 'class=active' : '') }}>
+                        <a href="{{url('Customers')}}">Ventas</a></li>
                     <li><a href="{{ url('Marketing') }}">Comericialización</a></li>
                     <li><a href="#">Propietarios</a></li>
                 </ul>

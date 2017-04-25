@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
+
 //	Route::get('/home', 'HomeController@index');
 	Route::get('/home', 'DashboardsController@properties');
 
@@ -44,6 +45,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('Properties','PropertiesController');
 	Route::resource('Tasks','TasksController');
 	Route::resource('Trackings','TrackingsController');
+	Route::resource('Projects','ProjectsController');
 
 
 	Route::get('cities/{id}', [
@@ -52,7 +54,14 @@ Route::group(['middleware' => 'web'], function () {
 		]
 	);
 
+/*
+	Route::post('/addTask', [
+					'uses' => 'TasksController@store',
+					'as' => 'Tasks.store'
+			]
+	);*/
 
+//	Route::post( '/addTask', 'TasksController@store' );
 
 	Route::get('/PropertyStatus/{id}/destroy', [
 		'uses' => 'PropertyStatesController@destroy',
@@ -72,11 +81,25 @@ Route::group(['middleware' => 'web'], function () {
 		]
 	);
 
+	Route::get('/Projects/{id}/destroy', [
+					'uses' => 'ProjectsController@destroy',
+					'as' => 'Projects.destroy'
+			]
+	);
+
+
 	Route::get('/Trackings/{id}/create', [
 					'uses' => 'TrackingsController@create',
 					'as' => 'Trackings.create'
 			]
 	);
+
+	Route::get('/Tasks/{id}/create', [
+					'uses' => 'TasksController@create',
+					'as' => 'Tasks.create'
+			]
+	);
+
 
 
 });

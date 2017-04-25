@@ -166,6 +166,8 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+
     ],
 
     /*
@@ -219,9 +221,12 @@ return [
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,                
+        'Html' => Collective\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class,
+
+
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

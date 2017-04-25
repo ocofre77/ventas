@@ -4,6 +4,10 @@
     Roles
 @endsection
 
+@section('contentheader_title')
+    Roles
+@endsection
+
 
 @section('main-content')
 <div class="models--actions">

@@ -1,7 +1,11 @@
 <h4 style="padding-left:5px;">Inmuebles</h4>
 
 <div class="form-group">
-    {!! Form::select('property_id',$properties,null,['class'=>'select form-control','required', 'placeholder'=>'Selecione  Inmueble']) !!}
+    {!! Form::select('project_id',$projects,null,['class'=>'select form-control','required', 'placeholder'=>'Selecione Proyecto']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::select('property_id',$properties,null,['class'=>'select form-control','required', 'placeholder'=>'Selecione Inmueble']) !!}
 </div>
 
 <div style="margin-top:20px;">

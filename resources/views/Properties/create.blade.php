@@ -5,7 +5,7 @@
 @endsection
 
 @section('contentheader_description')
-    0
+    Crear
 @endsection
 
 @section('htmlheader_title')
@@ -18,6 +18,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
+                    <!--
                     <div class="box-header with-border">
                         <h3 class="box-title">Formulario de Inmnueble</h3>
                         <div class="box-tools pull-right">
@@ -25,14 +26,20 @@
                                 <i class="fa fa-minus"></i></button>
                         </div>
                     </div>
-
+-->
                     <div class="box-body">
 
                         {!! Form::Open(['route' => 'Properties.store','method' => 'POST','files'=> true]) !!}
-
                         <div class="row">
-
                             <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            {!! Form::label('project_id', 'Proyecto') !!}
+                                            {!! Form::select('project_id',$projects,null,['class'=>'select form-control','required', 'placeholder'=>'Seleccione Proyecto']) !!}
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -124,18 +131,10 @@
                                                 </span>
                                                 {!! Form::text('value',null,['class'=>'form-control','placeholder'=>'0.00', 'requerid' ]) !!}
                                             </div>
-
-
-
-
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    {!! Form::label('owner_id', 'Propietario') !!}
-                                    {!! Form::text('owner_id',null,['class'=>'form-control','placeholder'=>'Propietario', 'requerid' ]) !!}
-                                </div>
 
                             </div>
 
@@ -154,6 +153,10 @@
                                 <div class="form-group">
                                     {!! Form::label('image', 'Imagen') !!}
                                     {!! Form::file('image') !!}
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::label('owner_id', 'Propietario') !!}
+                                    {!! Form::text('owner_id',null,['class'=>'form-control','placeholder'=>'Propietario', 'requerid' ]) !!}
                                 </div>
 
                                 <div class="form-group">

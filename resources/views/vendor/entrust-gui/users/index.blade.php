@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-    0
+    {{ $users->count() }}
 @endsection
 
 

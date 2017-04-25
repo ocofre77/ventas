@@ -38,7 +38,7 @@ class CreateTagsTable extends Migration
             $table->integer('tracking_id')->unsigned();
             $table->integer('tag_id')->unsigned();
 
-            $table->foreign('tracking_id')->references('id')->on('properties');
+            $table->foreign('tracking_id')->references('id')->on('trackings');
             $table->foreign('tag_id')->references('id')->on('tags');
 
             $table->timestamps();

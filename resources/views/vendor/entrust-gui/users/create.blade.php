@@ -4,6 +4,10 @@
     Usuarios
 @endsection
 
+@section('contentheader_title')
+    Usuarios
+@endsection
+
 
 @section('main-content')
 <form action="{{ route('entrust-gui::users.store') }}" method="post" role="form">

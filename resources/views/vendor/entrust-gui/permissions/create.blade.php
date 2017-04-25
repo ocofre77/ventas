@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('contentheader_title')
+    Permisos
+@endsection
+
 @section('htmlheader_title')
     Permisos
 @endsection

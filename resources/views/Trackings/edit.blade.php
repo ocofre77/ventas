@@ -195,15 +195,27 @@
         });
 
         // add function
-        $("#addTask").click(function() {
+        $("#formAddTask").on( 'submit',function( event ) {
 
-              $.ajax({
+            event.preventDefault();
+
+
+            $.ajax({
                 type: 'post',
-                url: '/Tasks',
-                data: {
+                url: '/addTask',
+                data: JSON.stringify({
                     'date': $('#date').val(),
-                },
+                    'hour_from': $("#hour_from").val(),
+                    'hour_to': $("#hour_to").val(),
+                    'task_type_id': $("#task_type_id").val(),
+                    'property_id': $("#property_id").val(),
+                    'notes': $("#notes").val(),
+                    'tracking_id': $("#tracking_id").val()
+                }),
+                dataType: 'json',
                 success: function(data) {
+                    alert(data);
+                    /*
                     if ((data.errors)) {
                         $('.error').removeClass('hidden');
                         $('.error').text(data.errors.title);
@@ -212,11 +224,14 @@
                         $('.error').remove();
                         $('#table').append("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.title + "</td><td>" + data.description + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-title='" + data.title + "' data-description='" + data.description + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-title='" + data.title + "' data-description='" + data.description + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
                     }
+                    */
                 },
             });
+
 
         });
 
 
     </script>
+
 @endsection

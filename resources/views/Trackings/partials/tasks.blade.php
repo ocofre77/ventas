@@ -4,10 +4,13 @@
         <li>
             <i class="fa fa-plus"></i>
             <div class="timeline-item" style="width:0;">
+{{--
                 <button id="btmAddTask" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                     Agregar
-                </button>
+                    <i class="fa fa-plus" aria-hidden="true"></i>Agregar
+                </button> , $tracking->id
+--}}
+                <a id="btmAddTask" href="{{ route('Tasks.create', (( $tracking == null )? 0: $tracking->id ))}}" type="button" class="btn btn-success">
+                    <i class="fa fa-home" aria-hidden="true"></i> Agregar</a>
             </div>
         </li>
 
