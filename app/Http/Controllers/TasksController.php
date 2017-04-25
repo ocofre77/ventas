@@ -35,11 +35,19 @@ class TasksController extends Controller
             $tracking_id = $request->tracking_id;
             $tracking = Tracking::find($tracking_id);
         //dd($tracking);
-
+            $task->done = false;
             $task->save();
             //flash('Tipo de Propiedad Creado.', 'info')->important();
             return redirect()->route('Trackings.create',$tracking->contact_id);
             //return response()->json($task);
         //}
     }
+
+    public function doneTask($id){
+        $task = Task::find($id);
+        $task->done = true;
+        $task->save();
+    }
+
+
 }

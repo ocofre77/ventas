@@ -38,7 +38,7 @@
                         <div class="col-md-3 col-md-6">
                             {!! Form::label('hour_from', 'Hora Desde') !!}
                             <div class="input-group">
-                                {!! Form::text('hour_from',null,['class'=>'form-control timepicker']) !!}
+                                {!! Form::text('hour_from',null,['class'=>'form-control timepicker time']) !!}
                                 <div class="input-group-addon">
                                     <i class="fa fa-clock-o"></i>
                                 </div>
@@ -47,7 +47,7 @@
                         <div class="col-md-3 col-md-6">
                             {!! Form::label('hour_to', 'Hora Hasta') !!}
                             <div class="input-group">
-                                {!! Form::text('hour_to', null ,['   class'=>'form-control timepicker']) !!}
+                                {!! Form::text('hour_to', null ,['   class'=>'form-control timepicker time']) !!}
                                 <div class="input-group-addon">
                                     <i class="fa fa-clock-o"></i>
                                 </div>
@@ -94,6 +94,16 @@
         $(".timepicker").timepicker({
             showInputs: true
         });
+
+        $('.row .time').timepicker({
+            'showDuration': true,
+            'minTime': '8:00am',
+            'maxTime': '6:pm',
+            'step':15,
+            'timeFormat': 'g:ia'
+        });
+
+
 
     </script>
 
