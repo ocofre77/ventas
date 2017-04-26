@@ -202,7 +202,7 @@
 
             $.ajax({
                 type: 'post',
-                url: '/addTask',
+                url: 'Trackings.addProperties',
                 data: JSON.stringify({
                     'date': $('#date').val(),
                     'hour_from': $("#hour_from").val(),

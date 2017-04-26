@@ -131,4 +131,16 @@ class TrackingsController extends Controller
 
     }
 
+
+    public function addProperties(Request $request){
+
+        $data = $request->json()->all();
+        dd($data);
+        $tracking = Tracking::find($data->id);
+        $tracking->tags()->sync($data->tags);
+
+
+    }
+
+
 }

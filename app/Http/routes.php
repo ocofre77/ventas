@@ -54,6 +54,12 @@ Route::group(['middleware' => 'web'], function () {
 		]
 	);
 
+	Route::post('/addProperties',[
+		'uses' => 'TrackingsController@addProperties',
+		'as' => 'Trackings.addProperties'
+	]);
+
+
 /*
 	Route::post('/addTask', [
 					'uses' => 'TasksController@store',
@@ -99,6 +105,8 @@ Route::group(['middleware' => 'web'], function () {
 					'as' => 'Tasks.create'
 			]
 	);
+
+
 
 
 
