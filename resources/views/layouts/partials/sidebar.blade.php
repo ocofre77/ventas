@@ -63,6 +63,8 @@
                         <a href="{{url('Properties')}}">Mis Inmuebles</a></li>
                     <li class="{{ ((Request::is('Projects')) ? 'class=active' : '')}}">
                         <a href="{{url('Projects')}}">Proyectos</a></li>
+                    <li class="{{ ((Request::is('Tags')) ? 'class=active' : '')}}">
+                        <a href="{{url('Tags')}}">Caracteristicas</a></li>
                 </ul>
             </li>
 

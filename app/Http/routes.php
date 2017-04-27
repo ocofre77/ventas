@@ -46,6 +46,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('Tasks','TasksController');
 	Route::resource('Trackings','TrackingsController');
 	Route::resource('Projects','ProjectsController');
+	Route::resource('Tags','TagsController');
 
 
 	Route::get('cities/{id}', [
@@ -106,7 +107,11 @@ Route::group(['middleware' => 'web'], function () {
 			]
 	);
 
-
+	Route::get('/Tags/{id}/destroy', [
+					'uses' => 'TagsController@destroy',
+					'as' => 'Tags.destroy'
+			]
+	);
 
 
 

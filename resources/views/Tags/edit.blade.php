@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('contentheader_title')
-	Proyectos
+	Caracteristicas
 @endsection
 
 @section('contentheader_description')
-	Proyectos
+	Caracteristicas
 @endsection
 
 @section('htmlheader_title')
-	Proyectos
+	Caracteristicas
 @endsection
 
 
@@ -20,7 +20,7 @@
 			<div class="col-md-12">
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">Editar Proyecto</h3>
+						<h3 class="box-title">Editar Caracteristicas</h3>
 
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -30,11 +30,11 @@
 
 					<div class="box-body">
 
-					{!! Form::Open(['route' => ['Projects.update',$project],'method' => 'PUT']) !!}
+					{!! Form::Open(['route' => ['Tags.update',$tag],'method' => 'PUT']) !!}
 						<div class="form-group">
 
-						{!! Form::label('name', 'Nombre del Proyecto') !!}
-						{!! Form::text('name',$project->name ,['class'=>'form-control','placeholder'=>'Nombre del Proyecto', 'requerid' ]) !!}
+						{!! Form::label('name', 'Descripcion') !!}
+						{!! Form::text('name',$tag->name ,['class'=>'form-control','placeholder'=>'Descripcion', 'requerid' ]) !!}
 
 						</div>
 
