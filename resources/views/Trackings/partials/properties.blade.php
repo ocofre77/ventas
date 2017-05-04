@@ -10,12 +10,9 @@
 
 <div style="margin-top:20px;">
     <i class="fa fa-thumbs-up"></i> INMUEBLES FAVORITOS
+    <a id="btmAddProperty" href="{{ route('Trackings.addProperty', (( $tracking == null )? 0: $tracking->id ))}}" type="button" class="btn btn-primary pull-right btn-xs">
+        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Agregar Inmueble </a>
 
-    <a class="btn btn-primary pull-right btn-xs" style="margin-top:-5px;"
-       href="#" >
-        <i class="glyphicon glyphicon-plus"></i>
-        Agregar inmueble
-    </a>
 </div>
 <br>
 

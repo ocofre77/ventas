@@ -21,13 +21,15 @@
 <!-- Mis pluging -->
 <script src="{{ asset('/plugins/chosen/chosen.jquery.min.js') }}"></script>
 
+<script src="{{ asset('/plugins/select2/select2.full.min.js') }}"></script>
+
 <!-- Datepair -->>
 <script src="{{ asset('/plugins/datepair/jquery.datepair.min.js') }}"></script>
 
 <!-- Sales -->
 <script src="{{ asset('/js/sales.js') }}" type="text/javascript"></script>
 
-<script>
+<script type="text/javascript">
     $('#flash-overlay-modal').modal();
     $(document).ready(function(){
         $('form').attr('autocomplete', 'off');

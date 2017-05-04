@@ -82,6 +82,7 @@
               <table class="table table-striped">
                 <thead>
                   <td>ID</td>
+                  <td>Imagen</td>
                   <td>Codigo</td>
                   <td>Tipo</td>
                   <td>Habitaciones</td>
@@ -96,6 +97,13 @@
                 @foreach ($properties as $property)
                   <tr>
                     <td>{{ $property->id }}</td>
+                    <td>
+                      @if( $property->images->count() > 0 )
+                        <img src="/images/galery/{{ $property->images[0]->name }}" style="width:60px; height: 40px;"  alt="">
+                      @else
+                      <img src="img/no-photo.png" style="width:60px; height: 40px;"  alt="">
+                      @endif
+                    </td>
                     <td>{{ $property->name }}</td>
                     <td>{{ $property->propertyType->name }}</td>
                     <td> {{ $property->bedrooms }}</td>
@@ -125,56 +133,50 @@
     </div>
   </div>
 
+  <select class="js-data-example-ajax">
+    <option value="3620194" selected="selected">select2/select2</option>
+  </select>
+
+
 {{ "hola" }}
 {{  "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}
 {{ "DOCUMENT_ROOT" }}
   {{ "$_SERVER[DOCUMENT_ROOT]" }}
 @endsection
-
-
-
 @section('js')
-  <script>
+  $(".js-data-example-ajax").select2({
+  ajax: {
+  url: "https://api.github.com/search/repositories",
+  dataType: 'json',
+  delay: 250,
+  data: function (params) {
+  return {
+  q: params.term, // search term
+  page: params.page
+  };
+  },
+  processResults: function (data, params) {
+  // parse the results into the format expected by Select2
+  // since we are using custom formatting functions we do not need to
+  // alter the remote JSON data, except to indicate that infinite
+  // scrolling can be used
+  params.page = params.page || 1;
 
-    var cityDefault = 0;
+  return {
+  results: data.items,
+  pagination: {
+  more: (params.page * 30) < data.total_count
+  }
+  };
+  },
+  cache: true
+  },
+  escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+  minimumInputLength: 1,
+  templateResult: formatRepo, // omitted for brevity, see the source of this page
+  templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+  });
+ @endsection
 
 
-    $(".chosen-select").chosen({
-      no_results_text: "Oops, No hay Datos!",
-      placeholder_text_multiple:"Seleccione..."
-    });
 
-    $("#state_id").change(function(event){
-
-      $("#city_id").empty();
-      $.get("/cities/"+ event.target.value, function(response, state){
-        $.each(response, function(key, value) {
-          if ( cityDefault == value.id)
-          {
-            $("#city_id").append("<option value='" + value.id + "' selected='selected'>" + value.name + "</option>");
-          }
-          else
-          {
-            $("#city_id").append("<option value='" + value.id + "'>" + value.name + "</option>");
-          }
-        });
-      });
-      if( cityDefault > 0)
-        $("#city_id").val(cityDefault);
-    });
-
-
-    $("#bathrooms").blur(function(){
-      if(Number($("#bathrooms").val()) > Number($("#bathrooms").prop('max')))
-        $("#bathrooms").val($("#bathrooms").prop('max'));
-    });
-
-
-    $("#bedrooms").blur(function(){
-      if(Number($("#bedrooms").val()) > Number($("#bedrooms").prop('max')))
-        $("#bedrooms").val($("#bedrooms").prop('max'));
-    });
-
-  </script>
-
-@endsection

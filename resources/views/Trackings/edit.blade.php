@@ -78,7 +78,7 @@
 
             <div class="col-md-3">
                 @include('Trackings.partials.tasks')
-                @include('Trackings.partials.modalTask')
+                {{--@include('Trackings.partials.modalTask')--}}
             </div>
 
             <div class="col-md-4">

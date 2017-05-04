@@ -37,7 +37,7 @@ class Tracking extends Model
     }
 
     public function properties(){
-        return $this->hasMany('App\Property');
+        return $this->belongsToMany('App\Property','tracking_property');
     }
 
 

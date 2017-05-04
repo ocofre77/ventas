@@ -55,11 +55,11 @@ Route::group(['middleware' => 'web'], function () {
 		]
 	);
 
-	Route::post('/addProperties',[
-		'uses' => 'TrackingsController@addProperties',
-		'as' => 'Trackings.addProperties'
-	]);
-
+	Route::get('properties/{id}', [
+					'uses' => 'ProjectsController@getProperties',
+					'as' => 'Projects.getProperties'
+			]
+	);
 
 /*
 	Route::post('/addTask', [
@@ -106,6 +106,11 @@ Route::group(['middleware' => 'web'], function () {
 					'as' => 'Tasks.create'
 			]
 	);
+
+	Route::get('/Trackings/{id}/addProperty',[
+			'uses' => 'TrackingsController@addProperty',
+			'as' => 'Trackings.addProperty'
+	]);
 
 	Route::get('/Tags/{id}/destroy', [
 					'uses' => 'TagsController@destroy',

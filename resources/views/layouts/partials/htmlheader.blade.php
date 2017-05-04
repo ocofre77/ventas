@@ -33,6 +33,10 @@
 
     <!-- Chosen -->
     <link href="{{ asset('/plugins/chosen/chosen.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- Select2 -->
+    <link href="{{ asset('/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+
     <link href="{{ asset('/css/funnel.css') }}" rel="stylesheet" type="text/css" />
 
 

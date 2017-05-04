@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use App\Property;
 use App\Http\Requests;
 
 class ProjectsController extends Controller
@@ -73,6 +74,13 @@ class ProjectsController extends Controller
 
         return redirect()->route('Projects.index');
 
+    }
+    public function getProperties(Request $request, $id){
+
+        if( $request->ajax()){
+            $properties = Property::properties($id);
+            return response()->json($properties);
+        }
     }
 
 

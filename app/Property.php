@@ -49,7 +49,15 @@ class Property extends Model
         return $this->belongsTo('App\City');
     }
 
+    public function trackings(){
+        return $this->belongsTo('App\Tracking','tracking_property','tracking_id','property_id')->withTimestamps();
+    }
+
+
     public static function properties($id){
         return Property::Where('project_id','=',$id)->get();
     }
+
+
+
 }

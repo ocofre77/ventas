@@ -132,15 +132,36 @@ class TrackingsController extends Controller
     }
 
 
-    public function addProperties(Request $request){
+    public function addProperty($tracking_id){
 
-        $data = $request->json()->all();
-        dd($data);
-        $tracking = Tracking::find($data->id);
-        $tracking->tags()->sync($data->tags);
+        $projects= Project::pluck('name','id');
 
+        $data =[
+            'projects'=> $projects,
+            'tracking_id'=> $tracking_id,
+        ];
+        
+        return view('Trackings.addProperty',$data );
 
     }
+
+    public function storeProperty(Request $request){
+
+        $tracking_id = $request->tracking_id;
+
+        $tracking = Tracking::find($tracking_id);
+        $my_tags = $tracking->properties->lists('id')->ToArray();
+
+
+        $properties =
+
+        $tracking->properties()->sync($request->tags);
+
+
+        return redirect()->route('Trackings.create');
+    }
+
+
 
 
 }

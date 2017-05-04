@@ -7,6 +7,11 @@ use App\City;
 
 class StatesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getCities(Request $request, $id){
 
         if( $request->ajax()){

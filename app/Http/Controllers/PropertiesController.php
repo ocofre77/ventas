@@ -18,6 +18,10 @@ use Laracasts\Flash\Flash;
 
 class PropertiesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function getProperties(Request $request, $id){
 
@@ -29,6 +33,14 @@ class PropertiesController extends Controller
     public function index()
     {
         $properties = Property::all();//orderBy('id','desc');
+
+
+        $properties->each(function($properties){
+            $properties->images;
+        });
+
+        //dd($properties);
+
         $propertyTypes = PropertyType::pluck('name','id');
         $projects = Project::pluck('name','id');
 

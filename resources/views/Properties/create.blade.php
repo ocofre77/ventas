@@ -181,15 +181,14 @@
 @endsection
 
 @section('js')
+{{--
 
     <script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA3bFi2IcZprQpW2KZpyndWEde2FCnN3Do"></script>
+--}}
 
-
-
-    <script>
-        $(".chosen-select").chosen({
-
-        });
+    <script type="text/javascript">
+        $(".chosen-select").chosen({});
     </script>
 
 @endsection
