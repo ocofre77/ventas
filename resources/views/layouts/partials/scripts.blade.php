@@ -12,6 +12,9 @@
 {{--<script src="{{ asset('/plugins/timepicker/bootstrap-timepicker.js') }}"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
 
+<!-- dataTables -->>
+<script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+
 <!-- select2 -->
 <script src="{{ asset('/plugins/select2/select2.min.js') }}"></script>
 

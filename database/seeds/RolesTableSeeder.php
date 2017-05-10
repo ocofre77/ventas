@@ -17,7 +17,7 @@ class RolesTableSeeder extends Seeder
         $states = array(
 
             array(
-                'name'=> 'Gerente',
+                'name'=> 'admin',
                 'display_name'=>'Gerente',
                 'description'=>'Tiene permiso para acceder a todos los datos y a la configuración' ,
                 'created_at' => date("Y-m-d H:i:s"),

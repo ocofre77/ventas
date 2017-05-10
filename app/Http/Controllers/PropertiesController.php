@@ -32,11 +32,11 @@ class PropertiesController extends Controller
     }
     public function index()
     {
-        $properties = Property::all();//orderBy('id','desc');
+        $properties = Property::paginate(6);//orderBy('id','desc');//orderBy('id','desc');
 
 
         $properties->each(function($properties){
-            $properties->images;
+            $properties->propertyType;
         });
 
         //dd($properties);
@@ -53,6 +53,7 @@ class PropertiesController extends Controller
 
         return view('Properties.index',$data);
     }
+
 
     public function create()
     {

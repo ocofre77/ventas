@@ -39,6 +39,10 @@ class TrackingsController extends Controller
 
         if( $trackings->count() > 0  ){
             $my_tags = $trackings[0]->tags->lists('id')->ToArray();
+            $tracking = $trackings[0];
+
+            $suggested = $this->getSuggested($tracking);
+
             $data = [
                 'propertyTypes' => $propertyTypes,
                 'tags'=> $tags,
@@ -46,7 +50,8 @@ class TrackingsController extends Controller
                 'taskTypes' => $taskTypes,
                 'customer'=> $customer,
                 'properties'=> $properties,
-                'tracking' => $trackings[0],
+                'propertiesSuggested' => $suggested,
+                'tracking' => $tracking,
                 'my_tags' => $my_tags,
                 'projects' => $projects
             ];
@@ -66,6 +71,53 @@ class TrackingsController extends Controller
 
         return view('Trackings.create',$data);
     }
+
+
+    public function getSuggested($tracking){
+
+        $propertiesSuggested= Property::Where('property_type_id','=',$tracking->property_type_id) ;
+
+        if($tracking->bedrooms_min != null && $tracking->bedrooms_min > 0){
+            $propertiesSuggested = $propertiesSuggested->Where('bedrooms','>=',$tracking->bedrooms_min );
+        }
+        if($tracking->bedrooms_max != null && $tracking->bedrooms_max > 0){
+            $propertiesSuggested = $propertiesSuggested->Where('bedrooms','<=',$tracking->bedrooms_max );
+        }
+
+        if($tracking->bathrooms_min != null && $tracking->bathrooms_min > 0){
+            $propertiesSuggested = $propertiesSuggested->Where('bathrooms','>=',$tracking->bathrooms_min );
+        }
+        if($tracking->bathrooms_max != null && $tracking->bathrooms_max > 0 ){
+            $propertiesSuggested =  $propertiesSuggested->Where('bathrooms','<=',$tracking->bathrooms_max );
+        }
+
+        if($tracking->area_min != null && $tracking->area_min > 0 ){
+            $propertiesSuggested =  $propertiesSuggested->Where('area','>=',$tracking->area_min );
+        }
+
+        if($tracking->area_max != null &&  $tracking->area_max > 0 ){
+            $propertiesSuggested = $propertiesSuggested->Where('area','<=',$tracking->area_max );
+        }
+
+        if($tracking->value_min != null && $tracking->value_min > 0){
+            $propertiesSuggested =  $propertiesSuggested->Where('value','>=',$tracking->value_min );
+        }
+
+        if($tracking->value_max != null && $tracking->value_max > 0 ){
+            $propertiesSuggested = $propertiesSuggested->Where('value','<=',$tracking->value_max );
+        }
+
+        $result = $propertiesSuggested->get();
+
+
+        $result->each(function($result){
+            $result->images;
+        });
+
+
+        return ($propertiesSuggested->get());
+    }
+
 
     public function edit($id)
     {
@@ -150,10 +202,10 @@ class TrackingsController extends Controller
         $tracking_id = $request->tracking_id;
 
         $tracking = Tracking::find($tracking_id);
-        $my_tags = $tracking->properties->lists('id')->ToArray();
+        //$my_tags = $tracking->properties->lists('id')->ToArray();
 
 
-        $properties =
+        //$properties =
 
         $tracking->properties()->sync($request->tags);
 

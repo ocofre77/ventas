@@ -36,26 +36,19 @@
     </div>
     <div class="info-box-content" style="padding-left:10px;">
         <a href="/pro/agencies/house/357244/tracking/" class="house-link">
-            Piso en
-            Calle de Goya,
-            Madrid,
-            130 m<sup>2</sup>
+            Piso en Calle de Goya,Madrid,130 m<sup>2</sup>
         </a><br>
-        <span class="label label-default">
-            EJEMPLO
-        </span>
-        <span class="label label-primary" style="margin-right:2px;">
-          150.000 €
-        </span>
+        <span class="label label-default">EJEMPLO</span>
+        <span class="label label-primary" style="margin-right:2px;">150.000 €</span>
 
-        <div class="btn-group" style="position: absolute; left: 100px; bottom: 9px; ">
-            orlando cofre
-        </div>
+        <div class="btn-group" style="position: absolute; left: 100px; bottom: 9px; ">Orlando cofre</div>
 
         <div class="btn-group" style="position: absolute; right: 5px; bottom: 5px; ">
+
             <a class="btn btn-sm btn-default" href="/pro/agencies/contact/600458/dislike/357244/">
                 <i style="font-size:130%;" class="fa fa-thumbs-down"></i>
             </a>
+
             <a class="btn btn-sm btn-default" href="http://witei.com/house/357244-piso-en-venta-en-madrid-de-130-m2-150000eur-EJEMPLO/" target="_blank">
                 <i style="font-size:130%;" class="fa fa-eye"></i>
             </a>
@@ -63,3 +56,45 @@
     </div><!-- /.info-box-content -->
 </div>
 @endif
+
+<div style="margin-top:20px;">
+    <i class="fa fa-home"></i> INMUEBLES SUGERIDOS
+</div>
+
+
+<br>
+
+
+@foreach($propertiesSuggested as  $propertySuggested )
+<div class="info-box" style="position: relative;margin:2px 0;" ondragstart="return false;">
+    <div class="info-box-icon bg-aqua">
+        <a href="/pro/agencies/house/357244/tracking/" style="color:white;">
+            <i class="fa fa-paperclip attach" style="display:none;"></i>
+            <i class="fa fa-paperclip sent bg-maroon" style="display:none"></i>
+
+            <i class="fa fa-home"></i>
+
+        </a>
+    </div>
+    <div class="info-box-content" style="padding-left:10px;">
+        <a href="/pro/agencies/house/357244/tracking/" class="house-link">{{ $propertySuggested->propertyType->name }}
+            {{ $propertySuggested->address }}, {{ number_format($propertySuggested->area,0) }} m<sup>2</sup>
+        </a><br>
+        <span class="label label-default">{{ $propertySuggested->name }}</span>
+        <span class="label label-primary" style="margin-right:2px;">{{ number_format($propertySuggested->value,2,',','.') }} USD</span>
+
+        <div class="btn-group" style="position: absolute; left: 100px; bottom: 9px; ">Orlando cofre</div>
+
+        <div class="btn-group" style="position: absolute; right: 5px; bottom: 5px; ">
+
+            <a class="btn btn-sm btn-default" href="/pro/agencies/contact/600458/dislike/357244/">
+                <i style="font-size:130%;" class="fa fa-thumbs-up"></i>
+            </a>
+
+            <a class="btn btn-sm btn-default" href="http://witei.com/house/357244-piso-en-venta-en-madrid-de-130-m2-150000eur-EJEMPLO/" target="_blank">
+                <i style="font-size:130%;" class="fa fa-eye"></i>
+            </a>
+        </div>
+    </div><!-- /.info-box-content -->
+</div>
+@endforeach

@@ -21,7 +21,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('bedrooms');
             $table->integer('bathrooms');
             $table->decimal('value',10,2);
-            $table->string('notes',2);
+            $table->string('notes',250);
 
             $table->integer('city_id')->unsigned();
             $table->integer('property_status_id')->unsigned();

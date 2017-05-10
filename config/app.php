@@ -166,6 +166,8 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
 
+        Yajra\Datatables\DatatablesServiceProvider::class,
+
         Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
@@ -225,6 +227,7 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
         'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class,
 
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],

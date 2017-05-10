@@ -13,7 +13,6 @@
                     <i class="fa fa-home" aria-hidden="true"></i> Agregar</a>
             </div>
         </li>
-{{--
 
         @if( $tracking != null)
 
@@ -106,7 +105,6 @@
         </li>
 
         @endif
---}}
         <li>
             <i class="fa fa-clock-o bg-gray"></i>
         </li>

@@ -13,9 +13,16 @@
 @endsection
 
 @section('contentheader_controls')
-	<a href="{{url('Properties/create')}}" class="btn btn-success pull-right">
-	  <i class="fa fa-plus" aria-hidden="true"></i>Agregar
-	</a>
+
+  {!! Form::Open(['route' => 'Properties.store','method' => 'POST','files'=> true, 'class'=>'navbar-form navbar-right']) !!}
+    {!! Form::select('project',$projects,null,['class'=>'select form-control', 'placeholder'=>'Proyecto']) !!}
+    {!! Form::select('propertyType',$propertyTypes,null,['class'=>'select form-control', 'placeholder'=>'Tipo de Propiedad']) !!}
+    <button type="submit" class="btn btn-default">Buscar</button>
+    <a href="{{url('Properties/create')}}" class="btn btn-success ">
+      <i class="fa fa-plus" aria-hidden="true"></i>Agregar
+    </a>
+  {!! Form::Close() !!}
+
 @endsection
 
 @section('main-content')
@@ -27,15 +34,7 @@
 		<div class="box box-primary">
 			<div class="form-inline" id="filters">
 
-				<div class="form-group">
-                  <div class="col-xs-4 col-md-2">
-                    {!! Form::select('project',$projects,null,['class'=>'select form-control', 'placeholder'=>'Proyecto']) !!}
-                  </div>
 
-					<div class="col-xs-4 col-md-offset-4">
-                      {!! Form::select('propertyType',$propertyTypes,null,['class'=>'select form-control', 'placeholder'=>'Tipo de Propiedad']) !!}
-					</div>
-				</div>
 
 {{--                <div class="form-group">
 
@@ -112,8 +111,8 @@
                     <td>{{ $property->area }}</td>
                     <td>{{ $property->address }}</td>
                     <td>{{ $property->city->name }}</td>
-                    <td>
-                      <a href="{{ route('Properties.edit', $property->id )}}" type="button" class="btn btn-warning" alt="Editar">
+                    <td style="width:96px;">
+                      <a href="{{ route('Properties.edit', $property->id )}}" type="button" class="btn btn-warning " alt="Editar">
                         <i class="fa fa-pencil" aria-hidden="true"></i></a>
                       <a href="" alt="Borrar"
                          type="button" onclick="return confirm('Seguro en Eliminar?')"
@@ -132,6 +131,9 @@
       </div>
     </div>
   </div>
+  <div class="text-center">
+    {{ $properties->links() }}
+  </div>
 
   <select class="js-data-example-ajax">
     <option value="3620194" selected="selected">select2/select2</option>
@@ -144,39 +146,8 @@
   {{ "$_SERVER[DOCUMENT_ROOT]" }}
 @endsection
 @section('js')
-  $(".js-data-example-ajax").select2({
-  ajax: {
-  url: "https://api.github.com/search/repositories",
-  dataType: 'json',
-  delay: 250,
-  data: function (params) {
-  return {
-  q: params.term, // search term
-  page: params.page
-  };
-  },
-  processResults: function (data, params) {
-  // parse the results into the format expected by Select2
-  // since we are using custom formatting functions we do not need to
-  // alter the remote JSON data, except to indicate that infinite
-  // scrolling can be used
-  params.page = params.page || 1;
 
-  return {
-  results: data.items,
-  pagination: {
-  more: (params.page * 30) < data.total_count
-  }
-  };
-  },
-  cache: true
-  },
-  escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
-  minimumInputLength: 1,
-  templateResult: formatRepo, // omitted for brevity, see the source of this page
-  templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
-  });
- @endsection
+@endsection
 
 
 

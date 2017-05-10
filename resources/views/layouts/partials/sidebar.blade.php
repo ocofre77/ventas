@@ -74,19 +74,20 @@
                 <ul class="treeview-menu">
                     <li class="{{ ((Request::is('Customers')) ? 'class=active' : '')}}">
                         <a href="{{url('Customers')}}">Mis Contactos</a></li>
-                    <li><a href="{{ url('Marketing') }}">Ventas</a></li>
+                    <li >
+                        <a href="{{ url('Marketing') }}">Ventas</a></li>
                     <li><a href="#">Propietarios</a></li>
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="{{ (((Request::is('ReportsSales') || Request::is('ReportsTasks') )) ? 'active treeview' : 'treeview')  }}">
                 <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>
                     <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li {{ (Request::is('Customers') ? 'class=active' : '') }}>
-                        <a href="{{url('Customers')}}">Ventas</a></li>
-                    <li><a href="{{ url('Marketing') }}">Comericialización</a></li>
-                    <li><a href="#">Propietarios</a></li>
+                    <li {{ (Request::is('ReportsSales') ? 'class=active' : '') }}>
+                        <a href="{{url('ReportsSales')}}">Ventas</a></li>
+                    <li class="{{ ((Request::is('ReportsTasks')) ? 'class=active' : '')}}">
+                        <a href="{{ url('ReportsTasks') }}">Comericialización</a></li>
                 </ul>
 
             </li>

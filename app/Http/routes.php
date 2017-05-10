@@ -49,6 +49,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('Tags','TagsController');
 
 
+
 	Route::get('cities/{id}', [
 		'uses' => 'StatesController@getCities',
 		'as' => 'States.getCities'
@@ -115,9 +116,28 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/Tags/{id}/destroy', [
 					'uses' => 'TagsController@destroy',
 					'as' => 'Tags.destroy'
-			]
-	);
+	]);
 
+
+	Route::get('/ReportsSales', [
+		'uses' => 'ReportsController@getSalesIndex',
+		'as' => 'Reports.sales'
+	]);
+
+	Route::get('/ReportsSalesData', [
+		'uses' => 'ReportsController@salesData',
+		'as' => 'Reports.salesData'
+	]);
+
+	Route::get('/ReportsTasks', [
+			'uses' => 'ReportsController@getTasksIndex',
+			'as' => 'Reports.sales'
+	]);
+
+	Route::get('/ReportsTasksData', [
+			'uses' => 'ReportsController@tasksData',
+			'as' => 'Reports.tasksData'
+	]);
 
 
 });
