@@ -71,10 +71,16 @@ Route::group(['middleware' => 'web'], function () {
 
 //	Route::post( '/addTask', 'TasksController@store' );
 
-	Route::get('/PropertyStatus/{id}/destroy', [
-		'uses' => 'PropertyStatesController@destroy',
-		'as' => 'PropertyStates.destroy'
+	Route::get('/Properties/{id}/destroy', [
+		'uses' => 'PropertiesController@destroy',
+		'as' => 'Properties.destroy'
 		]
+	);
+
+	Route::get('/PropertyStatus/{id}/destroy', [
+					'uses' => 'PropertyStatesController@destroy',
+					'as' => 'PropertyStates.destroy'
+			]
 	);
 
 	Route::get('/PropertyTypes/{id}/destroy', [

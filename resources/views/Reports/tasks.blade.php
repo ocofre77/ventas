@@ -46,14 +46,14 @@
                 serverSide: true,
                 ajax: '{!! route('Reports.tasksData') !!}',
                 columns: [
-                    { data: 'id', name: 'id'},
-                    { data: 'user_name', name: 'user_name' },
-                    { data: 'customer_name', name: 'customer_name' },
-                    { data: 'task_type_name', name: 'task_type_name'},
-                    { data: 'date', name: 'date'},
-                    { data: 'hour_from', name:'hour_from'},
-                    { data: 'hour_to', name:'hour_to'},
-                    { data: 'notes', name:'notes'},
+                    { data: 'id', name: 'tasks.id'},
+                    { data: 'users.name', name: 'users.name' },
+                    { data: 'name', name: 'customers.name' },
+                    { data: 'name', name: 'task_types.name'},
+                    { data: 'date', name: 'tasks.date'},
+                    { data: 'hour_from', name:'tasks.hour_from'},
+                    { data: 'hour_to', name:'tasks.hour_to'},
+                    { data: 'notes', name:'tasks.notes'},
                 ]
             });
         });

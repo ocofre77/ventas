@@ -98,7 +98,7 @@
                     <td>{{ $property->id }}</td>
                     <td>
                       @if( $property->images->count() > 0 )
-                        <img src="/images/galery/{{ $property->images[0]->name }}" style="width:60px; height: 40px;"  alt="">
+                        <img src="ventas/public/images/galery/{{ $property->images[0]->name }}" style="width:60px; height: 40px;"  alt="">
                       @else
                       <img src="img/no-photo.png" style="width:60px; height: 40px;"  alt="">
                       @endif
@@ -115,8 +115,9 @@
                       <a href="{{ route('Properties.edit', $property->id )}}" type="button" class="btn btn-warning " alt="Editar">
                         <i class="fa fa-pencil" aria-hidden="true"></i></a>
                       <a href="" alt="Borrar"
-                         type="button" onclick="return confirm('Seguro en Eliminar?')"
-                         class="btn btn-danger">
+                         data-href="{{ route('Properties.destroy', $property->id )}}"
+                         type="button"
+                         class="btn btn-danger"  data-toggle="modal" data-target="#confirm-delete">
                         <i class="fa fa-trash" aria-hidden="true"></i> </a>
                     </td>
                   </tr>
@@ -127,26 +128,48 @@
             </div>
           </div>
 
+          <div class="text-center">
+            {{ $properties->links() }}
+          </div>
 		</div>
       </div>
     </div>
   </div>
-  <div class="text-center">
-    {{ $properties->links() }}
+
+  <!-- Modal -->
+  <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Confirmar Borrado</h4>
+        </div>
+
+        <div class="modal-body">
+          <p>Estás a punto de eliminar un inmueble, este procedimiento es irreversible.</p>
+          <p>¿Quieres proceder?</p>
+          <p class="debug-url"></p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-danger btn-ok">Delete</a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <select class="js-data-example-ajax">
-    <option value="3620194" selected="selected">select2/select2</option>
-  </select>
 
-
-{{ "hola" }}
-{{  "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}
-{{ "DOCUMENT_ROOT" }}
-  {{ "$_SERVER[DOCUMENT_ROOT]" }}
 @endsection
 @section('js')
+  <script>
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+      $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 
+      $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+    });
+  </script>
 @endsection
 
 

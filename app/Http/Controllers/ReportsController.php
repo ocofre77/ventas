@@ -58,9 +58,9 @@ class ReportsController extends Controller
             ->join('tasks','tasks.tracking_id','=','trackings.id')
             ->join('task_types','task_types.id','=','tasks.task_type_id')
             ->select('tasks.id',
-                'users.name as user_name',
-                'customers.name as customer_name',
-                'task_types.name as task_type_name',
+                'users.name',
+                'customers.name',
+                'task_types.name',
                 'tasks.date',
                 'tasks.hour_from',
                 'tasks.hour_to',

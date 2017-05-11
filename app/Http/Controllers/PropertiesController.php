@@ -30,6 +30,7 @@ class PropertiesController extends Controller
             return response()->json($properties);
         }
     }
+
     public function index()
     {
         $properties = Property::paginate(6);//orderBy('id','desc');//orderBy('id','desc');
@@ -49,8 +50,6 @@ class PropertiesController extends Controller
             'properties' => $properties,
             'projects' => $projects,
         ];
-
-
         return view('Properties.index',$data);
     }
 
@@ -178,12 +177,25 @@ class PropertiesController extends Controller
         $property->save();
         $property->tags()->sync($request->tags);
 
-
-
         flash('Inmueble Actualizado.', 'info')->important();
 
         return redirect()->route('Properties.index');
 
     }
+
+
+    public function destroy($id)
+    {
+        if( $id != null)
+        {
+            $property = Property::find($id);//orderBy('id','desc');
+            $property->delete();
+            flash('Se ha eliminado correctamente.', 'danger')->important();
+        }
+
+        $propertyStates = PropertyStatus::all();//orderBy('id','desc');
+        return redirect()->route('Properties.index');
+    }
+
 
 }

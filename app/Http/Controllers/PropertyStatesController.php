@@ -80,9 +80,10 @@ class PropertyStatesController extends Controller
         $propertyStatus->name = $request->name;
         $propertyStatus->save();
 
-        flash('Estado de Propiedad Actualizado.', 'info')->important();
-        return redirect()->route('PropertyStates.index');
-    
+        flash('Estado de Propiedad Actualizado.', 'success')->important();
+
+        $propertyStates = PropertyStatus::all();//orderBy('id','desc');
+        return view('PropertyStates.index')->with('propertyStates',$propertyStates);
     }
 
 
