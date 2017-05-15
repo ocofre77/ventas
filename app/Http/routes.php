@@ -48,6 +48,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('Projects','ProjectsController');
 	Route::resource('Tags','TagsController');
 
+	Route::resource('Mail','MailController');
 
 
 	Route::get('cities/{id}', [
@@ -59,6 +60,14 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('properties/{id}', [
 					'uses' => 'ProjectsController@getProperties',
 					'as' => 'Projects.getProperties'
+			]
+	);
+
+
+
+	Route::post('trackingAddProperty', [
+					'uses' => 'TrackingsController@storeProperty',
+					'as' => 'Trackings.storeProperty'
 			]
 	);
 

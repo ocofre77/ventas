@@ -21,6 +21,7 @@ class BusinessStatesTableSeeder extends Seeder
             array('name'=> 'Visitado','created_at' => date("Y-m-d H:i:s") ),
             array('name'=> 'Negociación','created_at' => date("Y-m-d H:i:s") ),
             array('name'=> 'Ganado','created_at' => date("Y-m-d H:i:s") ),
+            array('name'=> 'Inactivo','created_at' => date("Y-m-d H:i:s") ),
 
         );
 

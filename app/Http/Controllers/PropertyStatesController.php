@@ -60,10 +60,14 @@ class PropertyStatesController extends Controller
 
         $propertyStatus = new PropertyStatus($request->all());
         $propertyStatus->save();
+        $propertyStates = PropertyStatus::all();//orderBy('id','desc');
         flash('Estado de Propiedad Creado.', 'info')->important();
 
+        //return redirect()->route('PropertyStates.index');
         $propertyStates = PropertyStatus::all();//orderBy('id','desc');
-        return redirect()->route('PropertyStates.index');
+        //flash('Estado de Propiedad Actualizado.', 'success')->important();
+        return view('PropertyStates.index')->with('propertyStates',$propertyStates);
+
     }
 
 
@@ -79,10 +83,8 @@ class PropertyStatesController extends Controller
         $propertyStatus = PropertyStatus::find($id);
         $propertyStatus->name = $request->name;
         $propertyStatus->save();
-
-        flash('Estado de Propiedad Actualizado.', 'success')->important();
-
         $propertyStates = PropertyStatus::all();//orderBy('id','desc');
+        flash('Estado de Propiedad Actualizado.', 'success')->important();
         return view('PropertyStates.index')->with('propertyStates',$propertyStates);
     }
 

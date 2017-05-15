@@ -15,6 +15,10 @@ class MailController extends Controller
         return view('pages.contact.shout');
     }
 
+    public function index(){
+        return View("Mail.index");
+    }
+
     public function sendmail(ShoutFormRequest $request)
     {
         //dd(app::get('mail'));

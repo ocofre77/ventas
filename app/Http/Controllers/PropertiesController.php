@@ -35,12 +35,9 @@ class PropertiesController extends Controller
     {
         $properties = Property::paginate(6);//orderBy('id','desc');//orderBy('id','desc');
 
-
         $properties->each(function($properties){
             $properties->propertyType;
         });
-
-        //dd($properties);
 
         $propertyTypes = PropertyType::pluck('name','id');
         $projects = Project::pluck('name','id');
@@ -127,8 +124,6 @@ class PropertiesController extends Controller
                 $image->save();
             }
 
-
-
             $property->tags()->sync($request->tags);
             flash('Inmueble Creado.', 'info')->important();
         }
@@ -186,15 +181,21 @@ class PropertiesController extends Controller
 
     public function destroy($id)
     {
-        if( $id != null)
-        {
-            $property = Property::find($id);//orderBy('id','desc');
-            $property->delete();
-            flash('Se ha eliminado correctamente.', 'danger')->important();
-        }
 
-        $propertyStates = PropertyStatus::all();//orderBy('id','desc');
-        return redirect()->route('Properties.index');
+        try{
+            if( $id != null)
+            {
+                $property = Property::find($id);//orderBy('id','desc');
+                $property->delete();
+                flash('Se ha eliminado correctamente.', 'danger')->important();
+                return redirect()->route('Properties.index');
+            }
+        }
+        catch(Exception $ex)
+        {
+            flash('Inmueble Creado.', 'info')->important();
+            return redirect()->route('Properties.index');
+        }
     }
 
 

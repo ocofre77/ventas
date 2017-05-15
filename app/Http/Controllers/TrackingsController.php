@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TrackingProperty;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,6 +14,7 @@ use App\BusinessStatus;
 use App\Customer;
 use App\Property;
 use App\TaskType;
+use App\TasK;
 
 class TrackingsController extends Controller
 {
@@ -31,9 +33,6 @@ class TrackingsController extends Controller
         $businessStatus = BusinessStatus::pluck('name','id');
         $taskTypes = TaskType::pluck('name','id');
 
-        $projects= Project::pluck('name','id');
-        $properties= Property::pluck('name','id');
-
         //Se deben Selecionar la  propiedades que no este vendidas
         $tags = Tag::pluck('name','id');
 
@@ -43,17 +42,33 @@ class TrackingsController extends Controller
 
             $suggested = $this->getSuggested($tracking);
 
+            $myproperties = $trackings[0]->properties;
+            $myproperties->each(function($myproperties){
+                $myproperties->propertyType;
+                $myproperties->project;
+            });
+
+
+            $mytasks = Task::where ('tracking_id',$tracking-> id)
+                 ->orderBy('date', 'desc')
+                 ->orderBy('hour_to','desc')
+                 ->get();
+            $mytasks->each(function($mytasks){
+                $mytasks->taskType;
+            });
+
+
             $data = [
                 'propertyTypes' => $propertyTypes,
                 'tags'=> $tags,
                 'businessStatus'=> $businessStatus,
                 'taskTypes' => $taskTypes,
                 'customer'=> $customer,
-                'properties'=> $properties,
                 'propertiesSuggested' => $suggested,
                 'tracking' => $tracking,
                 'my_tags' => $my_tags,
-                'projects' => $projects
+                'mytasks' => $mytasks,
+                'myproperties' => $myproperties,
             ];
             return view('Trackings.edit',$data);
         }
@@ -65,16 +80,17 @@ class TrackingsController extends Controller
             'businessStatus'=> $businessStatus,
             'taskTypes' => $taskTypes,
             'customer'=> $customer,
-            'properties'=> $properties,
-            'projects' => $projects,
+            'propertiesSuggested' => null,
+            'mytasks'=>null,
+            'myproperties' => null,
         ];
 
         return view('Trackings.create',$data);
     }
 
 
-    public function getSuggested($tracking){
-
+    public function getSuggested($tracking)
+    {
         $propertiesSuggested= Property::Where('property_type_id','=',$tracking->property_type_id) ;
 
         if($tracking->bedrooms_min != null && $tracking->bedrooms_min > 0){
@@ -145,75 +161,52 @@ class TrackingsController extends Controller
             ];
             return view('Trackings.edit',$data);
         }
-
-
     }
-
-
 
 
     public function store(Request $request)
     {
         $tracking = new Tracking($request->all());
         $tracking->user_id = \Auth::user()->id;
-
-        //dd($tracking->user_id);
-
-                $tracking->save();
-        //dd($tracking->tags());
+        $tracking->save();
         $tracking->tags()->sync($request->tags);
-
         return redirect()->route('Customers.index');
-
     }
+
 
     public function update(Request $request, $id)
     {
         $tracking = Tracking::find($id);
         $tracking->fill($request->all());
         $tracking->save();
-
         $tracking->tags()->sync($request->tags);
-
-
-
         flash('Inmueble Actualizado.', 'info')->important();
-
         return redirect()->route('Customers.index');
-
     }
 
 
-    public function addProperty($tracking_id){
-
+    public function addProperty($tracking_id)
+    {
         $projects= Project::pluck('name','id');
-
         $data =[
             'projects'=> $projects,
             'tracking_id'=> $tracking_id,
         ];
-        
         return view('Trackings.addProperty',$data );
-
-    }
-
-    public function storeProperty(Request $request){
-
-        $tracking_id = $request->tracking_id;
-
-        $tracking = Tracking::find($tracking_id);
-        //$my_tags = $tracking->properties->lists('id')->ToArray();
-
-
-        //$properties =
-
-        $tracking->properties()->sync($request->tags);
-
-
-        return redirect()->route('Trackings.create');
     }
 
 
+    public function storeProperty(Request $request)
+    {
+        $trackingPropery = new TrackingProperty();
+        $trackingPropery->tracking_id = $request->tracking_id;
+        $trackingPropery->property_id = $request->property_id;
+        $trackingPropery->winner = 0;
+        $trackingPropery->save();
 
+        $tracking = Tracking::find($request->tracking_id);
+
+        return redirect()->route('Trackings.create',$tracking->contact_id);
+    }
 
 }

@@ -74,9 +74,11 @@
                 <ul class="treeview-menu">
                     <li class="{{ ((Request::is('Customers')) ? 'class=active' : '')}}">
                         <a href="{{url('Customers')}}">Mis Contactos</a></li>
+{{--
                     <li >
                         <a href="{{ url('Marketing') }}">Ventas</a></li>
                     <li><a href="#">Propietarios</a></li>
+--}}
                 </ul>
             </li>
 

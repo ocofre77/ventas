@@ -17,7 +17,7 @@ class TagsController extends Controller
 
     public function index()
     {
-        $tags = Tag::all();//orderBy('id','desc');
+        $tags = Tag::paginate(6);;//orderBy('id','desc');
 
         //Flash::info("Listado de Datos");
 

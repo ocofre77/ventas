@@ -20,9 +20,11 @@ class TasksController extends Controller
     public function create($tracking_id)
     {
         $taskTypes = TaskType::pluck('name','id');
+        $tracking = Tracking::find($tracking_id);
         $data = [
             'taskTypes' => $taskTypes,
             'tracking_id' => $tracking_id,
+            'contact_id' => $tracking->contact_id,
         ];
         return view('Tasks.create',$data);
     }

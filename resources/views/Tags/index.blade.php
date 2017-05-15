@@ -63,6 +63,11 @@
 
 					</div>
 
+					<div class="text-center">
+						{{ $tags->links() }}
+					</div>
+
+
 				</div>
 			</div>
 		</div>

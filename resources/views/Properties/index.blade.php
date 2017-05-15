@@ -98,7 +98,7 @@
                     <td>{{ $property->id }}</td>
                     <td>
                       @if( $property->images->count() > 0 )
-                        <img src="ventas/public/images/galery/{{ $property->images[0]->name }}" style="width:60px; height: 40px;"  alt="">
+                        <img src="images/galery/{{ $property->images[0]->name }}" style="width:60px; height: 40px;"  alt="">
                       @else
                       <img src="img/no-photo.png" style="width:60px; height: 40px;"  alt="">
                       @endif

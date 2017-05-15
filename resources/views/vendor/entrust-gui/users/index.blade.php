@@ -27,7 +27,7 @@
   @foreach($users as $user)
     <tr>
       <td>{{ $user->name }}</td>
-      <td>{{ $user->email }}</th>
+      <td>{{ $user->email }}</td>
       <td class="col-xs-3">
         <form action="{{ route('entrust-gui::users.destroy', $user->id) }}" method="post">
           <input type="hidden" name="_method" value="DELETE">

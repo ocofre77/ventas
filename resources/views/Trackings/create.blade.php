@@ -16,34 +16,13 @@
 
             <!-- Conversations -->
             <div class="btn-group pull-right" title="Indica un correo válido para empezar a enviar mensajes.">
-                <a class="btn btn-primary disabled" href="#">
+                <a class="btn btn-primary" href="{{url('Customers')}}">
                     <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                    Nueva conversación
+                    Ir a Contactos
                 </a>
 
             </div>
             <!-- END Conversations -->
-            <!-- Edit -->
-            <div class="btn-group pull-right" style="margin-right:8px;">
-                <a class="btn btn-primary" href="/pro/agencies/contact/600458/update/">
-                    <i class="glyphicon glyphicon-edit"></i> Editar
-                </a>
-
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="confirm-dialog" href="" data-url="/pro/agencies/contact/600458/delete/" data-text="Al eliminar este contacto se eliminarán también todas sus conversaciones, perfil, e historial.">
-                            <i class="fa fa-remove"></i>
-                            Eliminar contacto
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- END Edit -->
 
             <form method="post" class="pull-right" style="margin-right:8px;" action="/api/v1/contact/update_funnel_step/">
                 <input name="csrfmiddlewaretoken" value="e3XrsmQk6l8qIuRwpoXx97nBWGdtdTDv" type="hidden">

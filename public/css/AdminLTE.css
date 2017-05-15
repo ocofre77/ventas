@@ -2360,6 +2360,7 @@ a:focus {
  * Component: alert
  * ----------------
  */
+/*
 .alert {
   border-radius: 3px;
 }
@@ -2395,6 +2396,7 @@ a:focus {
 .alert-info {
   border-color: #00acd6;
 }
+*/
 /*
  * Component: Nav
  * --------------

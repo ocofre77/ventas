@@ -22,38 +22,30 @@ Agregar Propiedad
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal">
+        {!! Form::Open(['route' => 'Trackings.storeProperty','method' => 'POST']) !!}
             <div class="box-body">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="inputEmail3">Proyecto</label>
 
                     <div class="col-sm-10">
-
                         {!! Form::select('project_id',$projects,null,['class'=>'select form-control','required','id'=>'project_id', 'placeholder'=>'Selecione Proyecto']) !!}
-
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="inputPassword3">Inmueble</label>
-
                     <div class="col-sm-10">
-                        <select id="property_id" name="proporty_id" required='required' class="select form-control" placeholder="Seleccione Propiedad"></select>
-
+                        <select id="property_id" name="property_id" required='required' class="select form-control" placeholder="Seleccione Propiedad"></select>
                     </div>
                 </div>
 
-
-
             </div>
             {!! Form::hidden('tracking_id', $tracking_id  ) !!}
-
-                    <!-- /.box-body -->
             <div class="box-footer">
                 <button class="btn btn-default" type="submit">Cancelar</button>
                 <button class="btn btn-info pull-right" type="submit">Agregar</button>
             </div>
-            <!-- /.box-footer -->
-        </form>
+        {!! Form::Close() !!}
+
     </div>
 
 

@@ -21,63 +21,68 @@
                                </div>
                 -->
 
-                {!! Form::Open(['route' => 'Tasks.store', 'method' => 'POST']) !!}
+    {!! Form::Open(['route' => 'Tasks.store', 'method' => 'POST']) !!}
 
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6 col-md-6">
-                            {!! Form::label('date', 'Fecha') !!}
+        <div class="row">
+            <div class="col-md-6 col-md-6">
+                {!! Form::label('date', 'Fecha') !!}
 
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                {!! Form::text('date', \Carbon\Carbon::now()->format('d/m/Y'),['class'=>' form-control pull-righ']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-md-6">
-                            {!! Form::label('hour_from', 'Hora Desde') !!}
-                            <div class="input-group">
-                                {!! Form::text('hour_from',null,['class'=>'form-control timepicker time']) !!}
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-md-6">
-                            {!! Form::label('hour_to', 'Hora Hasta') !!}
-                            <div class="input-group">
-                                {!! Form::text('hour_to', null ,['   class'=>'form-control timepicker time']) !!}
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                            </div>
-                        </div>
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            {!! Form::label('task_type_id','Tipo de Tarea') !!}
-                            {!! Form::select('task_type_id',$taskTypes, null,['class' =>'select form-control' ]) !!}
-                        </div>
-                        <div class="col-md-6">
-                            {!! Form::label('property_id','Inmueble') !!}
-                            {!! Form::text('property_id', null,['class'=>'form-control']) !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            {!! Form::label('notes','Notas') !!}
-                            {!! Form::textarea('notes', null,['class'=>'form-control','size' => '30x3']) !!}
-                        </div>
-                    </div>
-                    {!! Form::hidden('tracking_id', $tracking_id  ) !!}
+                    {!! Form::text('date', \Carbon\Carbon::now()->format('d/m/Y'),['class'=>' form-control pull-righ']) !!}
                 </div>
-                    {!! Form::submit('Agregar Tarea',['class'=>'btn btn-primary']) !!}
+            </div>
+            <div class="col-md-3 col-md-6">
+                {!! Form::label('hour_from', 'Hora Desde') !!}
+                <div class="input-group">
+                    {!! Form::text('hour_from',null,['class'=>'form-control timepicker time']) !!}
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-6">
+                {!! Form::label('hour_to', 'Hora Hasta') !!}
+                <div class="input-group">
+                    {!! Form::text('hour_to', null ,['   class'=>'form-control timepicker time']) !!}
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-
-                {!! Form::Close() !!}
+        <div class="row">
+            <div class="col-md-6">
+                {!! Form::label('task_type_id','Tipo de Tarea') !!}
+                {!! Form::select('task_type_id',$taskTypes, null,['class' =>'select form-control' ]) !!}
+            </div>
+            <div class="col-md-6" style="display:none">
+                {!! Form::label('property_id','Inmueble') !!}
+                {!! Form::text('property_id', null,['class'=>'form-control']) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {!! Form::label('notes','Notas') !!}
+                {!! Form::textarea('notes', null,['class'=>'form-control','size' => '30x3']) !!}
+            </div>
+        </div>
+        <div class="row">
+            <br>
+            <div class="col-md-12">
+                {!! Form::submit('Agregar Tarea',['class'=>'btn btn-primary']) !!}
+                <a id="btmAddProperty"
+                   href="{{ route('Trackings.create', $contact_id) }}"
+                   type="button" class="btn btn-default">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> Cancelar
+                </a>
+                {!! Form::hidden('tracking_id', $tracking_id  ) !!}
+            </div>
+        </div>
+    {!! Form::Close() !!}
 
 @endsection
 

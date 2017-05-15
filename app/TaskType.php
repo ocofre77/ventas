@@ -8,7 +8,8 @@ class TaskType extends Model
 {
     protected $table="task_types";
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name','icon'];
+
 
     public function user()
     {

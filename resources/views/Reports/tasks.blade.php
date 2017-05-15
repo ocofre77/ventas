@@ -47,8 +47,8 @@
                 ajax: '{!! route('Reports.tasksData') !!}',
                 columns: [
                     { data: 'id', name: 'tasks.id'},
-                    { data: 'users.name', name: 'users.name' },
-                    { data: 'name', name: 'customers.name' },
+                    { data: 'user_name', name: 'users.name' },
+                    { data: 'customer_name', name: 'customers.name' },
                     { data: 'name', name: 'task_types.name'},
                     { data: 'date', name: 'tasks.date'},
                     { data: 'hour_from', name:'tasks.hour_from'},
