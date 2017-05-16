@@ -23,20 +23,8 @@
 
             </div>
             <!-- END Conversations -->
-
-            <form method="post" class="pull-right" style="margin-right:8px;" action="/api/v1/contact/update_funnel_step/">
-                <input name="csrfmiddlewaretoken" value="e3XrsmQk6l8qIuRwpoXx97nBWGdtdTDv" type="hidden">
-                <input name="contact_id" value="600458" type="hidden">
-                <input name="step_id" value="10" type="hidden">
-                <input class="btn btn-success" value="ganado" type="submit">
-            </form>
-            <form method="post" class="pull-right" style="margin-right:8px;" action="/api/v1/contact/update_funnel_step/">
-                <input name="csrfmiddlewaretoken" value="e3XrsmQk6l8qIuRwpoXx97nBWGdtdTDv" type="hidden">
-                <input name="contact_id" value="600458" type="hidden">
-                <input name="step_id" value="-1" type="hidden">
-                <input class="btn btn-danger" value="inactivo" type="submit">
-            </form>
-
+            <a class="btn btn-success" href="{{ route('Trackings.win', $tracking->id )}}">Ganado</a>
+            <a class="btn btn-danger" href="{{ route('Trackings.inactive', $tracking->id )}}">Inactivo</a>
 
         </small>
     </h1>
@@ -166,6 +154,13 @@
         $('#date').datepicker({
             format: 'dd/mm/yyyy',
             autoclose: true
+        });
+
+        $('#hour_from').timepicker({
+            'setTime': new Date(),
+            'minTime': '7:00am',
+            'maxTime': '7:00pm',
+            'showDuration': true
         });
 
         //Timepicker

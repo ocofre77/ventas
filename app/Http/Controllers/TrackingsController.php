@@ -50,9 +50,9 @@ class TrackingsController extends Controller
 
 
             $mytasks = Task::where ('tracking_id',$tracking-> id)
-                 ->orderBy('date', 'desc')
-                 ->orderBy('hour_to','desc')
-                 ->get();
+                ->orderBy('date', 'desc')
+                ->orderBy('hour_to','desc')
+                ->get();
             $mytasks->each(function($mytasks){
                 $mytasks->taskType;
             });
@@ -123,15 +123,21 @@ class TrackingsController extends Controller
             $propertiesSuggested = $propertiesSuggested->Where('value','<=',$tracking->value_max );
         }
 
-        $result = $propertiesSuggested->get();
+        $myTracking = Tracking::find($tracking->id);
+        $listPropertyId = $myTracking->properties->lists('id')->ToArray();
 
+        if (count($listPropertyId) > 0){
+            $propertiesSuggested = $propertiesSuggested->whereNotIn('id', $listPropertyId );
+        }
+
+        $result = $propertiesSuggested->get();
 
         $result->each(function($result){
             $result->images;
         });
 
-
         return ($propertiesSuggested->get());
+
     }
 
 
@@ -170,7 +176,8 @@ class TrackingsController extends Controller
         $tracking->user_id = \Auth::user()->id;
         $tracking->save();
         $tracking->tags()->sync($request->tags);
-        return redirect()->route('Customers.index');
+        return redirect()->route('Trackings.create',$tracking->contact_id);
+        //return redirect()->route('Customers.index');
     }
 
 
@@ -181,7 +188,8 @@ class TrackingsController extends Controller
         $tracking->save();
         $tracking->tags()->sync($request->tags);
         flash('Inmueble Actualizado.', 'info')->important();
-        return redirect()->route('Customers.index');
+        return redirect()->route('Trackings.create',$tracking->contact_id);
+        //return redirect()->route('Customers.index');
     }
 
 
@@ -208,5 +216,46 @@ class TrackingsController extends Controller
 
         return redirect()->route('Trackings.create',$tracking->contact_id);
     }
+
+
+    public function dropProperty($id, $propertyId)
+    {
+        $trackingPropery = TrackingProperty::where('tracking_id',$id)
+            ->where('property_id',$propertyId);
+        $trackingPropery->delete();
+
+        $tracking = Tracking::find($id);
+        return redirect()->route('Trackings.create',$tracking->contact_id);
+    }
+
+
+    public function insertProperty($id, $propertyId)
+    {
+        $trackingPropery = new TrackingProperty();
+        $trackingPropery->tracking_id = $id;
+        $trackingPropery->property_id = $propertyId;
+        $trackingPropery->winner = 0;
+        $trackingPropery->save();
+
+        $tracking = Tracking::find($id);
+        return redirect()->route('Trackings.create',$tracking->contact_id);
+    }
+
+    public function win($id)
+    {
+        $tracking = Tracking::find($id);
+        $tracking->business_status_id = 5; // ganado
+        $tracking->save();
+        return redirect()->route('Trackings.create',$tracking->contact_id);
+    }
+
+    public function inactive($id)
+    {
+        $tracking = Tracking::find($id);
+        $tracking->business_status_id = 6; // inactivo
+        $tracking->save();
+        return redirect()->route('Trackings.create',$tracking->contact_id);
+    }
+
 
 }

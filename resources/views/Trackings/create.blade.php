@@ -9,9 +9,7 @@
             <div class="rating-container rating-xs rating-animate"><div class="rating"><span class="empty-stars"><span class="star"><i class="glyphicon glyphicon-star-empty"></i></span><span class="star"><i class="glyphicon glyphicon-star-empty"></i></span><span class="star"><i class="glyphicon glyphicon-star-empty"></i></span></span><span class="filled-stars" style="width: 0%;"><span class="star"><i class="glyphicon glyphicon-star"></i></span><span class="star"><i class="glyphicon glyphicon-star"></i></span><span class="star"><i class="glyphicon glyphicon-star"></i></span></span></div><input id="rating-input" class="rating hide" min="0" max="3" step="1" data-size="xs" data-stars="3" value="0" data-show-clear="false" data-show-caption="false" type="number"></div>
         </div>
 
-        <small>
-
-        </small>
+        <small></small>
         <small class="pull-right">
 
             <!-- Conversations -->
@@ -23,20 +21,6 @@
 
             </div>
             <!-- END Conversations -->
-
-            <form method="post" class="pull-right" style="margin-right:8px;" action="/api/v1/contact/update_funnel_step/">
-                <input name="csrfmiddlewaretoken" value="e3XrsmQk6l8qIuRwpoXx97nBWGdtdTDv" type="hidden">
-                <input name="contact_id" value="600458" type="hidden">
-                <input name="step_id" value="10" type="hidden">
-                <input class="btn btn-success" value="ganado" type="submit">
-            </form>
-            <form method="post" class="pull-right" style="margin-right:8px;" action="/api/v1/contact/update_funnel_step/">
-                <input name="csrfmiddlewaretoken" value="e3XrsmQk6l8qIuRwpoXx97nBWGdtdTDv" type="hidden">
-                <input name="contact_id" value="600458" type="hidden">
-                <input name="step_id" value="-1" type="hidden">
-                <input class="btn btn-danger" value="inactivo" type="submit">
-            </form>
-
 
         </small>
     </h1>
@@ -188,6 +172,12 @@
 
         $('#btmAddTask').addClass('disabled');
         $('#btmAddTask').removeAttr('data-toggle');
+
+        $('#btmAddProperty').addClass('disabled');
+        $('#btmAddProperty').removeAttr('data-toggle');
+
+
+
 
         /*
         $('#btmAddTask').removeClass('disabled');
