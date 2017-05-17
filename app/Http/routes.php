@@ -75,6 +75,13 @@ Route::group(['middleware' => 'web'], function () {
 			]
 	);
 
+	Route::post('/send', [
+		'uses' =>'MailController@send',
+		'as' => 'Mail.send'
+	]);
+
+
+
 	Route::get('/trackingDropProperty/{id}/{PropertyId}/DropProperty', [
 					'uses' => 'TrackingsController@dropProperty',
 					'as' => 'Trackings.dropProperty'
@@ -176,6 +183,7 @@ Route::group(['middleware' => 'web'], function () {
 			'uses' => 'ReportsController@tasksData',
 			'as' => 'Reports.tasksData'
 	]);
+
 
 
 });

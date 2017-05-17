@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShoutFormRequest;
+use Laracasts\Flash\Flash;
+
+
 
 class MailController extends Controller
 {
@@ -18,6 +21,44 @@ class MailController extends Controller
     public function index(){
         return View("Mail.index");
     }
+
+    public function send(Request $request)
+    {
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+        dd($request->all()) ;
+
+        Mail::send('emails.send', ['title' => $title, 'content' => $content], function ($message)
+        {
+            $message->from('me@gmail.com', 'Christian Nwamba');
+            $message->to('orlando.cofre77@gamil.com');
+        });
+
+        flash('Estado de Propiedad Actualizado.', 'success')->important();
+//        return response()->json(['message' => 'Request completed']);
+
+        return Redirect::home()->with('message', 'Thanks for contacting us!');
+
+    }
+
+    public function store(Request $request){
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+
+        Mail::send('Mail.send', ['title' => $title, 'content' => $content], function ($message)
+        {
+            $message->from('me@gmail.com', 'Christian Nwamba');
+            $message->to('orlando.cofre77@gamil.com');
+        });
+
+        flash('Estado de Propiedad Actualizado.', 'success')->important();
+//        return response()->json(['message' => 'Request completed']);
+
+        return Redirect::home()->with('message', 'Thanks for contacting us!');
+    }
+
 
     public function sendmail(ShoutFormRequest $request)
     {
