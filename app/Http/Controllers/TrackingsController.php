@@ -14,7 +14,7 @@ use App\BusinessStatus;
 use App\Customer;
 use App\Property;
 use App\TaskType;
-use App\TasK;
+use App\Task;
 
 class TrackingsController extends Controller
 {
@@ -37,6 +37,7 @@ class TrackingsController extends Controller
         $tags = Tag::pluck('name','id');
 
         if( $trackings->count() > 0  ){
+           // dd($trackings[0]->tags);
             $my_tags = $trackings[0]->tags->lists('id')->ToArray();
             $tracking = $trackings[0];
 

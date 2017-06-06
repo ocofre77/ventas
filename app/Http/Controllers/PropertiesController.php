@@ -31,17 +31,42 @@ class PropertiesController extends Controller
         }
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $properties = Property::paginate(6);//orderBy('id','desc');//orderBy('id','desc');
+        //$properties = null;
+
+        if( $request->project != "" and $request->propertyType == "" )
+        {
+            $properties = Property::Where('project_id','=',$request->project )
+                ->paginate(6)
+                ->appends('project_id',$request->project);
+        }
+        elseif( $request->project == "" and $request->propertyType != "" )
+        {
+            $properties = Property::Where('property_type_id','=',$request->propertyType )
+                ->paginate(6)
+                ->appends('property_type_id',$request->propertyType );
+        }
+        elseif( $request->project != "" and $request->propertyType != "" )
+        {
+            //dd($request->all());
+            $properties = Property::Where('property_type_id',$request->propertyType )
+                ->Where('project_id',$request->project )
+                ->paginate(6)
+                ->appends('project_id',$request->project)
+                ->appends('property_type_id',$request->propertyType );
+        }
+        elseif( $request->project == "" and $request->propertyType == "" )
+        {
+            $properties = Property::paginate(6);//orderBy('id','desc');//orderBy('id','desc');
+        }
+
 
         $properties->each(function($properties){
             $properties->propertyType;
         });
-
         $propertyTypes = PropertyType::pluck('name','id');
         $projects = Project::pluck('name','id');
-
         $data = [
             'propertyTypes' => $propertyTypes,
             'properties' => $properties,
@@ -59,7 +84,6 @@ class PropertiesController extends Controller
         $tags = Tag::pluck('name','id');
         $projects = Project::pluck('name','id');
 
-
         $config = array();
         $config['center'] = 'auto';
         $config['map_width'] = 500;
@@ -69,7 +93,6 @@ class PropertiesController extends Controller
             var mapCentre = map.getCenter();
             marker_0.setOptions({
                 position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
-
             });
         }
         centreGot = true;';
@@ -86,7 +109,6 @@ class PropertiesController extends Controller
         //Devolver vista con datos del mapa
         //return view('gmaps', compact('map'));
 
-
         $data = [
             'propertyTypes' => $propertyTypes,
             'propertyStates' => $propertyStates,
@@ -94,9 +116,7 @@ class PropertiesController extends Controller
             'tags' => $tags,
             'map' => $map,
             'projects' => $projects,
-
         ];
-
 
         return view('Properties.create',$data);
     }
@@ -171,11 +191,8 @@ class PropertiesController extends Controller
         $property->owner_id = null;
         $property->save();
         $property->tags()->sync($request->tags);
-
         flash('Inmueble Actualizado.', 'info')->important();
-
         return redirect()->route('Properties.index');
-
     }
 
 
@@ -196,6 +213,16 @@ class PropertiesController extends Controller
             flash('Inmueble Creado.', 'info')->important();
             return redirect()->route('Properties.index');
         }
+    }
+
+    public function show($id){
+        $property = Property::find($id);
+        $property->propertyType;
+        $property->city;
+        $data = [
+            'property' => $property
+        ];
+        return view('Properties.show',$data);
     }
 
 

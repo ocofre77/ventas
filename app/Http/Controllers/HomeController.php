@@ -8,6 +8,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Customer;
 use Illuminate\Http\Request;
 
 /**
@@ -31,9 +32,16 @@ class HomeController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //return view('home');
-        return view('Dashboards.DashboardSales');
+        //Usuario autenticado
+        $userId = \Auth::user()->id;
+
+        $customers = Customer::Search($request->name)->where('user_id',$userId)->paginate(5);//orderBy('id','desc');
+
+        $data = [
+            'customers' => $customers,
+        ];
+        return view('Customers.index',$data);//->with('data',$data);
     }
 }

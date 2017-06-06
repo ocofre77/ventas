@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Tracking;
 use App\CustomerType;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -20,13 +21,9 @@ class CustomersController extends Controller
         //Usuario autenticado
         $userId = \Auth::user()->id;
 
-        $customerTypes = CustomerType::all();
         $customers = Customer::Search($request->name)->where('user_id',$userId)->paginate(5);//orderBy('id','desc');
 
-        //dd($customers);
-
         $data = [
-            'customerTypes' => $customerTypes,
             'customers' => $customers,
         ];
         return view('Customers.index',$data);//->with('data',$data);
@@ -82,6 +79,42 @@ class CustomersController extends Controller
 
         return redirect()->route('Customers.index');
 
+    }
+    public function destroy($id)
+    {
+        try {
+
+            if ($id != null) {
+                $customer = Customer::find($id);//orderBy('id','desc');
+
+                $trackings = Tracking::where('contact_id', $id);
+
+                if ($trackings->count() > 0)
+                {
+                    flash('No se puede borrar porque tiene inmuebles Asociados.', 'danger')->important();
+
+                    $userId = \Auth::user()->id;
+
+                    $customers = Customer::where('user_id',$userId)->paginate(5);
+
+                    $data = [
+                        'customers' => $customers,
+                    ];
+                    return view('Customers.index',$data);;
+                }
+                else
+                {
+                    $customer->delete();
+                    flash('Se ha eliminado correctamente.', 'danger')->important();
+                }
+            }
+
+            return redirect()->route('Customers.index');
+        }
+        catch(Exception $ex)
+        {
+            flash('No se puede borrar porque tiene inmuebles Asociados.', 'danger')->important();
+        }
     }
 
 

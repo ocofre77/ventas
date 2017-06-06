@@ -5,7 +5,7 @@
 @endsection
 
 @section('contentheader_description')
-	0
+	{{ $properties->total() }}
 @endsection
 
 @section('htmlheader_title')
@@ -14,7 +14,7 @@
 
 @section('contentheader_controls')
 
-  {!! Form::Open(['route' => 'Properties.store','method' => 'POST','files'=> true, 'class'=>'navbar-form navbar-right']) !!}
+  {!! Form::Open(['route' => 'Properties.index','method' => 'GET','files'=> true, 'class'=>'navbar-form navbar-right']) !!}
     {!! Form::select('project',$projects,null,['class'=>'select form-control', 'placeholder'=>'Proyecto']) !!}
     {!! Form::select('propertyType',$propertyTypes,null,['class'=>'select form-control', 'placeholder'=>'Tipo de Propiedad']) !!}
     <button type="submit" class="btn btn-default">Buscar</button>
@@ -123,11 +123,9 @@
                   </tr>
                 @endforeach
                 </tbody>
-
               </table>
             </div>
           </div>
-
           <div class="text-center">
             {{ $properties->links() }}
           </div>

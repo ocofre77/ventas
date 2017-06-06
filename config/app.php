@@ -169,6 +169,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
+        Creativeorange\Gravatar\GravatarServiceProvider::class
 
     ],
 
@@ -230,6 +231,7 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
     ],
 
 ];

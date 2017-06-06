@@ -29,8 +29,9 @@
                     <a class="btn btn-sm btn-default" href="{{ route('Trackings.dropProperty', [$tracking->id, $myproperty->id] )}}">
                         <i style="font-size:130%;" class="fa fa-thumbs-down"></i>
                     </a>
-                    <a class="btn btn-sm btn-default" href="http://witei.com/house/357244-piso-en-venta-en-madrid-de-130-m2-150000eur-EJEMPLO/" target="_blank">
-                        <i style="font-size:130%;" class="fa fa-eye"></i>
+                    <a class="btn btn-sm btn-default"
+                       href="{{ route('Properties.show', $myproperty->id )}}" target="_blank">
+                       <i style="font-size:130%;" class="fa fa-eye"></i>
                     </a>
                 </div>
             </div><!-- /.info-box-content -->
@@ -64,7 +65,9 @@
                     <a class="btn btn-sm btn-default" href="{{ route('Trackings.insertProperty', [$tracking->id, $propertySuggested->id] )}}">
                         <i style="font-size:130%;" class="fa fa-thumbs-up"></i>
                     </a>
-                    <a class="btn btn-sm btn-default" href="http://witei.com/house/357244-piso-en-venta-en-madrid-de-130-m2-150000eur-EJEMPLO/" target="_blank">
+                    <a class="btn btn-sm btn-default"
+                       href="{{ route('Properties.show', $propertySuggested->id )}}" target="_blank">
+
                         <i style="font-size:130%;" class="fa fa-eye"></i>
                     </a>
                 </div>

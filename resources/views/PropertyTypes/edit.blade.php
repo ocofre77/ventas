@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('contentheader_title')
-	Tipos de PropiedaD
+	Tipos de Propiedad
 @endsection
 
 @section('contentheader_description')

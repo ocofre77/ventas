@@ -23,31 +23,33 @@
                 <li id="task-889751">
                     <i class="{{ $task->taskType->icon }}"></i>
                     <div class="timeline-item">
-                        <span class="pull-right" style="padding:5px;">
-                            <a href="#" class="btn btn-xs btn-success">
-                                <i class="fa fa-check"></i>
-                            </a>
-                            <div class="btn-group" role="group">
-                              <button class="btn btn-xs btn-default dropdown-toggle" type="button"
-                                      id="task-889751-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                  <i class="fa fa-cog"></i>
-                              </button>
-                              <ul class="dropdown-menu pull-right" aria-labelledby="task-889751-options">
-                                  <li>
-                                      <a href="#">
-                                          <i class="fa fa-edit"></i>
-                                          Editar
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#">
-                                          <i class="fa fa-file-text-o"></i>
-                                          {{ $task->notes }}
-                                      </a>
-                                  </li>
-                              </ul>
-                            </div>
-                        </span>
+{{--
+                                                <span class="pull-right" style="padding:5px;">
+                                                    <a href="#" class="btn btn-xs btn-success">
+                                                        <i class="fa fa-check"></i>
+                                                    </a>
+                                                    <div class="btn-group" role="group">
+                                                      <button class="btn btn-xs btn-default dropdown-toggle" type="button"
+                                                              id="task-889751-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                          <i class="fa fa-cog"></i>
+                                                      </button>
+                                                      <ul class="dropdown-menu pull-right" aria-labelledby="task-889751-options">
+                                                          <li>
+                                                              <a href="#">
+                                                                  <i class="fa fa-edit"></i>
+                                                                  Editar
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#">
+                                                                  <i class="fa fa-file-text-o"></i>
+                                                                  {{ $task->notes }}
+                                                              </a>
+                                                          </li>
+                                                      </ul>
+                                                    </div>
+                                                </span>
+                        --}}
 
                         <h3 class="timeline-header">
                             <strong>{{ date('G:i', strtotime($task->hour_to)) }} - {{ date('G:i', strtotime($task->hour_from)) }} {{ $task->taskType->name }}</strong>

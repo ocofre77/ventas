@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-    {{ $customers->count() }}
+    {{ $customers->total() }}
 @endsection
 
 @section('contentheader_controls')
@@ -25,7 +25,6 @@
             <i class="fa fa-plus" aria-hidden="true"></i> Agregar
         </a>
     </div>
-
     {!! Form::close() !!}
 @endsection
 

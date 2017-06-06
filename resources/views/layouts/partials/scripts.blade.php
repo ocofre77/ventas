@@ -2,6 +2,11 @@
 
 <!-- jQuery 2.1.4 -->
 <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+
+<!-- dataTables -->>
+{{--<script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>--}}
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
 <!-- Bootstrap 3.3.2 JS -->
 <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script>
 
@@ -11,9 +16,6 @@
 <!-- bootstrap time picker -->
 {{--<script src="{{ asset('/plugins/timepicker/bootstrap-timepicker.js') }}"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
-
-<!-- dataTables -->>
-<script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 
 <!-- select2 -->
 <script src="{{ asset('/plugins/select2/select2.min.js') }}"></script>

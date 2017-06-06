@@ -34,7 +34,7 @@
 
                         <div class="form-group">
                             {!! Form::label('name', 'Nombre') !!}
-                            {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre del Cliente', 'requerid' ]) !!}
+                            {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre del Cliente', 'requerid', 'maxlength' => 60 ]) !!}
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -64,7 +64,7 @@
                                         <span class="input-group-addon" id="sizing-addon2">
                                             <i class="fa fa-phone"></i>
                                         </span>
-                                        {!! Form::text('phone',null,['class'=>'form-control','placeholder'=>'Teléfono', 'requerid' ]) !!}
+                                        {!! Form::text('phone',null,['class'=>'form-control','placeholder'=>'Teléfono', 'requerid', 'maxlength' => 10  ]) !!}
                                     </div>
                                 </div>
                             </div>
@@ -75,21 +75,21 @@
                                         <span class="input-group-addon" id="sizing-addon2">
                                             <i class="fa fa-mobile"></i>
                                         </span>
-                                        {!! Form::text('cell_phone',null,['class'=>'form-control','placeholder'=>'Celular', 'requerid' ]) !!}
+                                        {!! Form::text('cell_phone',null,['class'=>'form-control','placeholder'=>'Celular', 'requerid', 'maxlength' => 10 ]) !!}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     {!! Form::label('city', 'Ciudad') !!}
-                                    {!! Form::text('city',null,['class'=>'form-control','placeholder'=>'Ciudad', 'requerid' ]) !!}
+                                    {!! Form::text('city',null,['class'=>'form-control','placeholder'=>'Ciudad', 'requerid', 'maxlength' => 40 ]) !!}
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('address', 'Direccion') !!}
-                            {!! Form::text('address',null,['class'=>'form-control','placeholder'=>'Dirección', 'requerid' ]) !!}
+                            {!! Form::text('address',null,['class'=>'form-control','placeholder'=>'Dirección', 'requerid', 'maxlength' => 120 ]) !!}
                         </div>
 
                         <div class="form-group">

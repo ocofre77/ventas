@@ -16,10 +16,10 @@ use Yajra\Datatables\Services\DataTable;
 class ReportsController extends Controller
 {
     //
-/*    public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function getSalesIndex(){
         return view('Reports.sales');
@@ -30,7 +30,7 @@ class ReportsController extends Controller
     }
 
 
-    public function salesData(){
+    public function salesData(Request $request){
         $sales = DB::table('customers')
             ->join('users', 'customers.user_id', '=', 'users.id')
             ->join('trackings','trackings.contact_id','=','customers.id')
@@ -44,14 +44,28 @@ class ReportsController extends Controller
                 'projects.name as project_name',
                 'property_types.name as property_type',
                 'properties.name',
-                'properties.value')
+                'properties.value',
+                'trackings.updated_at')
             ->where('trackings.business_status_id', '=', 5);
 
-        return Datatables::of($sales)->make(true);
+        //return Datatables::of($sales)->make(true);
+        return Datatables::of($sales)
+            ->filter(function ($query) use ($request) {
+                if ($request->has('date_from')) {
+                    $query->where('updated_at', '>=', "%{$request->get('date_from')}%");
+                }
+
+                if ($request->has('date_to')) {
+                    $query->where('updated_at', '<=', "%{$request->get('date_to')}%");
+                }
+
+            })
+            ->make(true);
+
     }
 
 
-    public function tasksData(){
+    public function tasksData(Request $request){
         $sales = DB::table('customers')
             ->join('users', 'customers.user_id', '=', 'users.id')
             ->join('trackings','trackings.contact_id','=','customers.id')
@@ -68,6 +82,10 @@ class ReportsController extends Controller
             ->where('trackings.business_status_id', '<>', 5);
 
         return Datatables::of($sales)->make(true);
+
+
+
+
     }
 
 

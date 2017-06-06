@@ -122,6 +122,14 @@ Route::group(['middleware' => 'web'], function () {
 			]
 	);
 
+	Route::get('/Properties/{id}/show', [
+					'uses' => 'PropertiesController@show',
+					'as' => 'Properties.show'
+			]
+	);
+
+
+
 	Route::get('/PropertyStatus/{id}/destroy', [
 					'uses' => 'PropertyStatesController@destroy',
 					'as' => 'PropertyStates.destroy'
