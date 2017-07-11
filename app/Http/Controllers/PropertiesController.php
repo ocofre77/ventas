@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Image;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,7 +11,10 @@ use App\PropertyType;
 use App\PropertyStatus;
 use App\State;
 use App\Tag;
+use App\Image;
+
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use League\Flysystem\Exception;
 use Laracasts\Flash\Flash;
 
@@ -133,17 +135,22 @@ class PropertiesController extends Controller
 
             //Manipulación de Imágenes
             if($request->file('image')){
-                $file = $request->file('image');
-                $name = 'property'.time().'.'.$file->getClientOriginalExtension();
-                $path = public_path().'/images/galery/';
-                $file->move($path,$name);
+                $files = $request->file('images');
+                foreach($files as $file){
+                    $rules = array('file','required');
+                    $validator = Validator::make(array('file'=>$file),$rules);
+                    if($validator){
+                        $name = 'property'.time().'.'.$file->getClientOriginalExtension();
+                        $path = public_path().'/images/galery/';
+                        $file->move($path,$name);
 
-                $image = new Image();
-                $image->name = $name;
-                $image->property()->associate($property);
-                $image->save();
+                        $image = new Image();
+                        $image->name = $name;
+                        $image->property()->associate($property);
+                        $image->save();
+                    }
+                }
             }
-
             $property->tags()->sync($request->tags);
             flash('Inmueble Creado.', 'info')->important();
         }
@@ -189,6 +196,23 @@ class PropertiesController extends Controller
         $property->fill($request->all());
         $property->address = $request->address;
         $property->owner_id = null;
+
+        $files = $request->file('images');
+
+        foreach($files as $file){
+            $rules = array('file','required');
+            $validator = Validator::make(array('file'=>$file),$rules);
+            if($validator){
+                $name = 'property'.time().'.'.$file->getClientOriginalExtension();
+                $path = public_path().'/images/galery/';
+                $file->move($path,$name);
+                $image = new Image();
+                $image->name = $name;
+                $image->property()->associate($property);
+                $image->save();
+            }
+        }
+
         $property->save();
         $property->tags()->sync($request->tags);
         flash('Inmueble Actualizado.', 'info')->important();
@@ -218,7 +242,9 @@ class PropertiesController extends Controller
     public function show($id){
         $property = Property::find($id);
         $property->propertyType;
+        $property->images;
         $property->city;
+
         $data = [
             'property' => $property
         ];

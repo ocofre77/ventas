@@ -123,6 +123,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
                             <img src="{{asset('/img/usernophoto.jpg')}}" class="user-image" alt="User Image"/>
+                            <img src="{{ Gravatar::src(Auth::user()->email) }}" class="user-image">
+
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{{ Auth::user()->name }}</span>
                         </a>

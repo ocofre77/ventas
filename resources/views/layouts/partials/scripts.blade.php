@@ -3,7 +3,7 @@
 <!-- jQuery 2.1.4 -->
 <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
 
-<!-- dataTables -->>
+<!-- dataTables -->
 {{--<script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>--}}
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
@@ -28,7 +28,7 @@
 
 <script src="{{ asset('/plugins/select2/select2.full.min.js') }}"></script>
 
-<!-- Datepair -->>
+<!-- Datepair -->
 <script src="{{ asset('/plugins/datepair/jquery.datepair.min.js') }}"></script>
 
 <!-- Sales -->

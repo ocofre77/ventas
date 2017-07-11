@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="box-body">
-                        {!! Form::Open(['route' => ['Properties.update',$property],'method' => 'PUT']) !!}
+                        {!! Form::Open(['route' => ['Properties.update',$property],'method' => 'PUT','files'=> true]) !!}
 
                         <div class="row">
 
@@ -149,9 +149,12 @@
                                     {!! Form::label('notes', 'Descripción') !!}
                                     {!! Form::textarea('notes', $property->notes, ['class'=>'form-control', 'requerid'] ) !!}
                                 </div>
-                                <div class="form-group">
 
+                                <div class="form-group">
+                                    {!! Form::label('image', 'Imágenes') !!}
+                                    {!! Form::file('images[]', array('multiple'=>true)) !!}
                                 </div>
+
                             </div>
                         </div>
 

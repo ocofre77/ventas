@@ -49,7 +49,7 @@
                     { data: 'id', name: 'tasks.id'},
                     { data: 'user_name', name: 'users.name' },
                     { data: 'customer_name', name: 'customers.name' },
-                    { data: 'name', name: 'task_types.name'},
+                    { data: 'task_types_name', name: 'task_types.name'},
                     { data: 'date', name: 'tasks.date'},
                     { data: 'hour_from', name:'tasks.hour_from'},
                     { data: 'hour_to', name:'tasks.hour_to'},

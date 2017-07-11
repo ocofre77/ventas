@@ -151,8 +151,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    {!! Form::label('image', 'Imagen') !!}
-                                    {!! Form::file('image') !!}
+                                    {!! Form::label('image', 'Imágenes') !!}
+                                    {!! Form::file('images[]', array('multiple'=>true)) !!}
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('owner_id', 'Propietario') !!}

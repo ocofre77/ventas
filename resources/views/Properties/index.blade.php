@@ -119,6 +119,12 @@
                          type="button"
                          class="btn btn-danger"  data-toggle="modal" data-target="#confirm-delete">
                         <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                      <a class="btn btn-sm btn-default"
+                         href="{{ route('Properties.show', $property->id )}}" target="_blank">
+
+                        <i style="font-size:130%;" class="fa fa-eye"></i>
+                      </a>
+
                     </td>
                   </tr>
                 @endforeach

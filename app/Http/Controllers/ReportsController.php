@@ -30,6 +30,7 @@ class ReportsController extends Controller
     }
 
 
+
     public function salesData(Request $request){
         $sales = DB::table('customers')
             ->join('users', 'customers.user_id', '=', 'users.id')
@@ -74,7 +75,7 @@ class ReportsController extends Controller
             ->select('tasks.id',
                 'users.name as user_name',
                 'customers.name as customer_name',
-                'task_types.name',
+                'task_types.name as task_types_name',
                 'tasks.date',
                 'tasks.hour_from',
                 'tasks.hour_to',

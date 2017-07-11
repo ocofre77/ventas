@@ -9,7 +9,12 @@
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- 1. Link to jQuery (1.8 or later), -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
 
+    <!-- fotorama.css & fotorama.js. -->
+    <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
 
 </head>
 <body>
@@ -28,7 +33,7 @@
         </a>
 
         <a class="navbar-brand hidden-xs" style="font-size:150%;color:#373737;margin-top:10px;" href="https://witei.com/">
-            Canalgi
+            Conalgi
         </a>
     </div>
     <div class="hidden-xs hidden-sm hidden-md">
@@ -52,10 +57,12 @@
 
 <!-- imagen del inmueble -->
 <div class="row-fluid">
+<div class="fotorama" data-nav="thumbs" data-width="100%" data-ratio="3"  >
     @if( $property->images->count() > 0 )
-        <img
-             src="{{ asset('images/galery/' . $property->images[0]->name) }}"
-             class="img-responsive" style="max-height: 70vh;width: 100%;"  alt="">
+
+        @foreach( $property->images as $image)
+            <img src="{{ asset('images/galery/' . $image->name) }}" class="img-responsive" >
+        @endforeach
     @else
         <img src="/img/backgrounds/no_pic.png"
              class="img-responsive" style="max-height: 70vh;width: 100%;"
@@ -150,6 +157,9 @@
     </div>
 
 </div>
+
+
+
 
 </body>
 </html>

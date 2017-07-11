@@ -30,8 +30,7 @@ class ReportsDataTable extends DataTable
      */
     public function query()
     {
-        $users = User::select();
-
+        $users = User::select('');
         return $this->applyScopes($users);
     }
 
@@ -45,10 +44,15 @@ class ReportsDataTable extends DataTable
         return $this->builder()
             ->columns([
                 'id',
+                'name',
+                'email',
+                'created_at',
+                'updated_at',
             ])
             ->ajax('')
             ->parameters([
-                'buttons' => ['csv', 'excel', 'pdf', 'print'],
+                'dom' => 'Bfrtip',
+                'buttons' => ['csv', 'excel', 'pdf', 'print', 'reset', 'reload'],
             ]);
     }
 }

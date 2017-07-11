@@ -104,9 +104,9 @@
             },
             columns: [
                 { data: 'id', name: 'id'},
-                { data: 'user_name', name: 'user_name' },
-                { data: 'customer_name', name: 'customer_name' },
-                { data: 'project_name', name: 'project_name'},
+                { data: 'user_name', name: 'user.name' },
+                { data: 'customer_name', name: 'customer.name' },
+                { data: 'project_name', name: 'project.name'},
                 { data: 'property_type', name: 'property_type'},
                 { data: 'name', name:'name'},
                 { data: 'value', name:'value'},
