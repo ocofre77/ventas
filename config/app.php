@@ -169,7 +169,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
-        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class
+        Creativeorange\Gravatar\GravatarServiceProvider::class
     ],
 
     /*
@@ -230,7 +230,7 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class
+        'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
     ],
 
 ];

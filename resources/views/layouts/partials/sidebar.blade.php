@@ -11,7 +11,7 @@
                     @if( Gravatar::exists('orlando.cofre77@gmail.com'))
                         {{--<img src="{{ Gravatar::src('orlando.cofre77@gmail.com') }}" class="img-circle" alt="User Image">--}}
                     @else
-                        <img src="{{ Gravatar::src('orlando.cofre77@gmail.com') }}">
+                        <img src="{{ Gravatar::get('orlando.cofre77@gmail.com') }}">
                         {{--<img src="{{asset('/img/usernophoto.jpg')}}" class="img-circle" alt="User Image" />--}}
                     @endif
                 </div>

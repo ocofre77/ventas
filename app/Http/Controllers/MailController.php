@@ -43,20 +43,22 @@ class MailController extends Controller
     }
 
     public function store(Request $request){
-        $title = $request->input('title');
-        $content = $request->input('content');
+        $title = $request->input('subject');
+        $content = $request->input('message');
 
 
         Mail::send('Mail.send', ['title' => $title, 'content' => $content], function ($message)
         {
-            $message->from('me@gmail.com', 'Christian Nwamba');
-            $message->to('orlando.cofre77@gamil.com');
+            $message->from('orlando.cofre77@gmail.com', 'Systems OR');
+            $message->to('orlando.cofre77@gmail.com');
         });
 
         flash('Estado de Propiedad Actualizado.', 'success')->important();
 //        return response()->json(['message' => 'Request completed']);
 
-        return Redirect::home()->with('message', 'Thanks for contacting us!');
+        //return Redirect::home()->with('message', 'Thanks for contacting us!');
+        return redirect()->route('Mail.index');
+
     }
 
 
