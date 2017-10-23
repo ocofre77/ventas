@@ -13,25 +13,23 @@
 @endsection
 
 @section('contentheader_controls')
-
     {!! Form::open(['route'=>'Customers.index', 'method' =>'GET', 'class' => 'navbar-form pull-right']) !!}
     <div class ="input-group" >
-        {!! Form::text('name',null,['class'=> 'form-control','placeholder'=>'Buscar Contacto..','aria-describedby'=>'search'])!!}
-        <span class="input-group-addon" id="search">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+      {!! Form::text('name',null,['class'=> 'form-control','placeholder'=>'Buscar Contacto..','aria-describedby'=>'search'])!!}
+      <span class="input-group-btn" id="search">
+        <button class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+      </span>
     </div>
-    <div class ="input-group" >
-        <a href="{{url('Customers/create')}}" type="button" class="btn btn-primary">
-            <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-        </a>
-    </div>
+
+    <a href="{{url('Customers/create')}}" type="button" class="btn btn-primary">
+        <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+    </a>
     {!! Form::close() !!}
 @endsection
 
 @section('main-content')
-
-
-
     <div class="container-fluid spark-screen">
         <div class="row">
             <div class="col-md-12">
@@ -50,7 +48,7 @@
 
                         <div class="row">
                             <table class="table table-striped">
-                                <thead>
+                                <thead class="thead-inverse">
                                 <td>ID</td>
                                 <td>Nombre</td>
                                 <td>Email</td>
@@ -75,22 +73,16 @@
                                                 <i class="fa fa-trash" aria-hidden="true"></i> Borrar</a>
                                             <a href="{{ route('Trackings.create', $customer->id )}}" type="button" class="btn btn-info">
                                                 <i class="fa fa-home" aria-hidden="true"></i> Oferta</a>
-
 {{--
                                             <a href="{{ route('Trackings.edit', $customer->id )}}" type="button" class="btn btn-info">
                                                 <i class="fa fa-home" aria-hidden="true"></i> Oferta</a>
 --}}
-
-
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
-
                             </table>
                         </div>
-
-
                     </div>
                     <div class="text-center">
                         {{ $customers->links() }}
@@ -99,4 +91,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('js')
+  <script>
+    $('#search').on('click', function(e) {
+
+      alert("ok");
+    });
+  </script>
 @endsection

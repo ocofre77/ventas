@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         {!! Form::label('name', 'Tipo de Propiedad') !!}
-                                        {!! Form::select('property_type_id',$propertyTypes,$property->property_type_id,['class'=>'select form-control','required', 'placeholder'=>'Tipo de Propiedad']) !!}
+                                        {!! Form::select('property_type_id',$propertyTypes,$property->property_type_id,['id'=>'property_type_id','class'=>'select form-control','required', 'placeholder'=>'Tipo de Propiedad']) !!}
                                     </div>
                                 </div>
 
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 oculto">
                                         <div class="form-group">
                                             {!! Form::label('bedrooms', 'Habitaciones') !!}
                                             <div class="input-group">
@@ -81,7 +81,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 oculto">
                                         <div class="form-group">
                                             {!! Form::label('bathrooms', 'Baños') !!}
                                             <div class="input-group">
@@ -173,13 +173,21 @@
 
 @section('js')
 
-    <script>
+    <script type="text/javascript">
 
-        if( $("#state_id").val() > 0 ){
-            cityDefault = {{ $property->city->id }};
-            $("#state_id").trigger('change');
-        }
+        var tipoPropiedad = "#property_type_id";
 
+        $(tipoPropiedad).on('change',function(){
+            if( $(tipoPropiedad).val() == "3" || $(tipoPropiedad).val() == "5"  ){
+                $(".oculto").hide();
+            }
+            else
+                $(".oculto").show();
+        })
+
+
+
+        $(".chosen-select").chosen({});
     </script>
 
 @endsection

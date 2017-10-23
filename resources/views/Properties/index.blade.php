@@ -18,6 +18,7 @@
     {!! Form::select('project',$projects,null,['class'=>'select form-control', 'placeholder'=>'Proyecto']) !!}
     {!! Form::select('propertyType',$propertyTypes,null,['class'=>'select form-control', 'placeholder'=>'Tipo de Propiedad']) !!}
     <button type="submit" class="btn btn-default">Buscar</button>
+
     <a href="{{url('Properties/create')}}" class="btn btn-success ">
       <i class="fa fa-plus" aria-hidden="true"></i>Agregar
     </a>
@@ -97,13 +98,16 @@
                   <tr>
                     <td>{{ $property->id }}</td>
                     <td>
+                      <a href="{{ route('Properties.show', $property->id )}}" target="_blank">
                       @if( $property->images->count() > 0 )
                         <img src="images/galery/{{ $property->images[0]->name }}" style="width:60px; height: 40px;"  alt="">
                       @else
-                      <img src="img/no-photo.png" style="width:60px; height: 40px;"  alt="">
+                        <img src="img/no-photo.png" style="width:60px; height: 40px;"  alt="">
                       @endif
+                      </a>
                     </td>
-                    <td>{{ $property->name }}</td>
+                    <td>{{ $property->name }}
+                    </td>
                     <td>{{ $property->propertyType->name }}</td>
                     <td> {{ $property->bedrooms }}</td>
                     <td>{{ $property->bathrooms }}</td>
@@ -119,12 +123,6 @@
                          type="button"
                          class="btn btn-danger"  data-toggle="modal" data-target="#confirm-delete">
                         <i class="fa fa-trash" aria-hidden="true"></i> </a>
-                      <a class="btn btn-sm btn-default"
-                         href="{{ route('Properties.show', $property->id )}}" target="_blank">
-
-                        <i style="font-size:130%;" class="fa fa-eye"></i>
-                      </a>
-
                     </td>
                   </tr>
                 @endforeach
@@ -175,6 +173,3 @@
     });
   </script>
 @endsection
-
-
-

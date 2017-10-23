@@ -197,11 +197,15 @@ class PropertiesController extends Controller
         $property->address = $request->address;
         $property->owner_id = null;
 
+        if($request->file('image')){
+
+
         $files = $request->file('images');
 
         foreach($files as $file){
             $rules = array('file','required');
             $validator = Validator::make(array('file'=>$file),$rules);
+            dd($validator);
             if($validator){
                 $name = 'property'.time().'.'.$file->getClientOriginalExtension();
                 $path = public_path().'/images/galery/';
@@ -212,7 +216,7 @@ class PropertiesController extends Controller
                 $image->save();
             }
         }
-
+      }
         $property->save();
         $property->tags()->sync($request->tags);
         flash('Inmueble Actualizado.', 'info')->important();

@@ -105,12 +105,7 @@
                 <!--
                 <a href="{{ url('/home') }}"><b>Conal</b>gi</a>
                 -->
-
                 <img src="/img/backgrounds/conalgi.gif" height="100" width="220" />
-
-
-
-
             </div><!-- /.login-logo -->
 
         @if (count($errors) > 0)
@@ -137,19 +132,19 @@
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
+                <div class="col-xs-3">
+                    <!-- <div class="checkbox icheck">
                         <label>
                             <input type="checkbox" name="remember"> {{ trans('adminlte_lang::message.remember') }}
                         </label>
-                    </div>
+                    </div> -->
                 </div><!-- /.col -->
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte_lang::message.buttonsign') }}</button>
                 </div><!-- /.col -->
             </div>
         </form>
-
+        <br>
         <a href="{{ url('/password/reset') }}">{{ trans('adminlte_lang::message.forgotpassword') }}</a><br>
         <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>
 
@@ -166,7 +161,6 @@
 
     <script>
         $(function () {
-
             var backgroundArray = [
                 "/img/backgrounds/2.jpg",
                 "/img/backgrounds/1.jpg",
@@ -177,12 +171,9 @@
                 "/img/backgrounds/7.jpg",
                 "/img/backgrounds/8.jpg",
                 "/img/backgrounds/9.jpg",
-
             ];
             var backgroundImg = backgroundArray[Math.floor(Math.random() * backgroundArray.length)];
-
             $('.background-div').css('background-image', 'url(' + backgroundImg + ')');
-
 
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-blue',

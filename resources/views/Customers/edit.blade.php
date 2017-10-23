@@ -94,8 +94,13 @@
                             {!! Form::text('address',$customer->address,['class'=>'form-control','placeholder'=>'Dirección', 'requerid' ]) !!}
                         </div>
 
-                        <div class="form-group">
+                        <div class="row">
                             {!! Form::submit('Editar',['class'=>'btn btn-primary']) !!}
+                            <a class="btn btn-labeled btn-default" href="{{ route('Customers.index') }}">
+                                <span class="btn-label"><i class="fa fa-chevron-left"></i></span>
+                                {{ trans('entrust-gui::button.cancel') }}
+                            </a>
+
                         </div>
 
                         {!! Form::Close() !!}

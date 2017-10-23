@@ -15,6 +15,11 @@
 
 @section('main-content')
 
+    @if( count( $errors) > 0 )
+        {{ dd($errors) }}
+    @endif
+
+
     <div class="container-fluid spark-screen">
         <div class="row">
             <div class="col-md-12">
@@ -92,8 +97,14 @@
                             {!! Form::text('address',null,['class'=>'form-control','placeholder'=>'Dirección', 'requerid', 'maxlength' => 120 ]) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
+                        <div class="row">
+                          <div class="col-md-12">
+                              {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
+                              <a class="btn btn-labeled btn-default" href="{{ route('Customers.index') }}">
+                                  <span class="btn-label"><i class="fa fa-chevron-left"></i></span>
+                                  {{ trans('entrust-gui::button.cancel') }}
+                              </a>
+                          </div>
                         </div>
 
                         {!! Form::Close() !!}

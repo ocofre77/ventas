@@ -7,6 +7,7 @@ use App\Tracking;
 use App\CustomerType;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\CustomerRequest;
 use Laracasts\Flash\Flash;
 
 class CustomersController extends Controller
@@ -42,6 +43,9 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         $customer = new Customer($request->all());
+
+        //dd($customer);
+
         $customer->user_id = \Auth::user()->id;
         $customer->save();
 
