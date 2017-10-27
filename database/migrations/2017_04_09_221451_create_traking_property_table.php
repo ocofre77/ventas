@@ -19,8 +19,8 @@ class CreateTrakingPropertyTable extends Migration
             $table->integer('tracking_id')->unsigned();
             $table->integer('property_id')->unsigned();
 
-            $table->foreign('tracking_id')->references('id')->on('trackings');
-            $table->foreign('property_id')->references('id')->on('properties');
+            $table->foreign('tracking_id')->references('id')->on('trackings')->onDelete('cascade');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -5,7 +5,7 @@
 @endsection
 
 @section('contentheader_description')
-    0
+    Edición
 @endsection
 
 @section('htmlheader_title')

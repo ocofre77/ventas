@@ -25,8 +25,8 @@ class CreateTagsTable extends Migration
             $table->integer('property_id')->unsigned();
             $table->integer('tag_id')->unsigned();
 
-            $table->foreign('property_id')->references('id')->on('properties');
-            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
 
             $table->timestamps();
         });

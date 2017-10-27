@@ -112,14 +112,14 @@
                     <td>{{ $property->address }}</td>
                     <td>{{ $property->city->name }}</td>
                     <td style="width:96px;">
-                      <a href="{{ route('Properties.edit', $property->id )}}" type="button" class="btn btn-warning " alt="Editar">
+                      <a href="{{ route('Properties.edit', $property->id )}}" type="button" class="btn btn-xs btn-warning " alt="Editar">
                         <i class="fa fa-pencil" aria-hidden="true"></i></a>
                       <a href="" alt="Borrar"
                          data-href="{{ route('Properties.destroy', $property->id )}}"
                          type="button"
-                         class="btn btn-danger"  data-toggle="modal" data-target="#confirm-delete">
+                         class="btn btn-xs btn-danger"  data-toggle="modal" data-target="#confirm-delete">
                         <i class="fa fa-trash" aria-hidden="true"></i> </a>
-                      <a class="btn btn-sm btn-default"
+                      <a class="btn btn-xs btn-default"
                          href="{{ route('Properties.show', $property->id )}}" target="_blank">
 
                         <i style="font-size:130%;" class="fa fa-eye"></i>
@@ -175,6 +175,3 @@
     });
   </script>
 @endsection
-
-
-

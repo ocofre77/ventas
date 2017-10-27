@@ -50,7 +50,7 @@ class MailController extends Controller
         Mail::send('Mail.send', ['title' => $title, 'content' => $content], function ($message)
         {
             $message->from('orlando.cofre77@gmail.com', 'Systems OR');
-            $message->to('orlando.cofre77@gmail.com');
+            $message->to('orlando.cofre77@gmail.com')->subject('Your Reminder!');
         });
 
         flash('Estado de Propiedad Actualizado.', 'success')->important();
@@ -107,9 +107,7 @@ class MailController extends Controller
         Mail::send('pages.contact.mail',
             $data,
             function($message)
-
             {
-
                 $message ->from('hazzir.mail@gmail.com', 'Hazzir Mail');
                 $message ->to('hazzir.mail@gmail.com', 'Test User')->subject('Feedback Hazzir ~ Test Mail');
 

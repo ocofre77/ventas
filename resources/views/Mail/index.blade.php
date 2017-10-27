@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('contentheader_title')
-    Mail
 @endsection
 
 @section('htmlheader_title')
@@ -9,7 +8,6 @@
 @endsection
 
 @section('contentheader_description')
-    0
 @endsection
 
 @section('contentheader_controls')
@@ -46,7 +44,14 @@
                 </div>
 
         </div>
-        {!! Form::submit('Send',['class'=>'btn btn-primary']) !!}
+        <div class="box-footer clearfix">
+          <div class="pull-right">
+            {!! Form::submit('Send',['class'=>'btn btn-primary']) !!}
+          </div>
+        </div>
+
+
+
 
         {!! Form::Close() !!}
     </div>
