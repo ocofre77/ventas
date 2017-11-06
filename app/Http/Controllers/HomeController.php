@@ -37,7 +37,7 @@ class HomeController extends Controller
         //Usuario autenticado
         $userId = \Auth::user()->id;
 
-        $customers = Customer::Search($request->name)->where('user_id',$userId)->paginate(5);//orderBy('id','desc');
+        $customers = Customer::Search($request->name)->where('user_id',$userId)->paginate(9);//orderBy('id','desc');
 
         $data = [
             'customers' => $customers,

@@ -8,6 +8,7 @@ use App\CustomerType;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Laracasts\Flash\Flash;
+use Mail;
 
 class CustomersController extends Controller
 {
@@ -21,7 +22,7 @@ class CustomersController extends Controller
         //Usuario autenticado
         $userId = \Auth::user()->id;
 
-        $customers = Customer::Search($request->name)->where('user_id',$userId)->paginate(5);//orderBy('id','desc');
+        $customers = Customer::Search($request->name)->where('user_id',$userId)->paginate(9);//orderBy('id','desc');
 
         $data = [
             'customers' => $customers,
@@ -44,9 +45,10 @@ class CustomersController extends Controller
         $customer = new Customer($request->all());
         $customer->user_id = \Auth::user()->id;
         $customer->save();
-
+        $LastInsertId = $customer->id;
+//        dd($LastInsertId);
+        $this->sendMail($LastInsertId);
         Flash::success('Contacto Creado.');
-
         return redirect()->route('Customers.index');
     }
 
@@ -117,5 +119,17 @@ class CustomersController extends Controller
         }
     }
 
+    public function sendMail($id){
+      $customer = Customer::find($id);
+      $title = $customer->name;
 
+      $content = "<p><strong>Correo: </strong>". $customer->email . "</p>";
+      $content = $content . "<p><strong>Celular: </strong>" . $customer->cell_phone . "</p>";
+
+        Mail::send('Mail.send', ['title' => $title, 'content' => $content], function ($message)
+        {
+//            $message->from('orlando.cofre77@gmail.com', 'Administrador');
+            $message->to('orlando.cofre77@gmail.com')->subject('Nuevo Cliente!');
+        });
+    }
 }

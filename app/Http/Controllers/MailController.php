@@ -43,14 +43,17 @@ class MailController extends Controller
     }
 
     public function store(Request $request){
+
         $title = $request->input('subject');
         $content = $request->input('message');
 
-
-        Mail::send('Mail.send', ['title' => $title, 'content' => $content], function ($message)
+        Mail::send(
+          'Mail.send',
+          ['title' => $title, 'content' => $content],
+          function ($message ) use ($request)
         {
-            $message->from('orlando.cofre77@gmail.com', 'Systems OR');
-            $message->to('orlando.cofre77@gmail.com')->subject('Your Reminder!');
+//            $message->from('orlando.cofre77@gmail.com', 'Systems OR');
+            $message->to($request->emailto)->subject($request->subject);
         });
 
         flash('Estado de Propiedad Actualizado.', 'success')->important();

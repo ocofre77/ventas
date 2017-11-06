@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Task;
 use App\Tracking;
 use App\TaskType;
+use App\Customer;
 use App\Http\Requests;
+use Mail;
+use DateTime;
 
 class TasksController extends Controller
 {
@@ -37,13 +40,12 @@ class TasksController extends Controller
             $tracking_id = $request->tracking_id;
             $tracking = Tracking::find($tracking_id);
             $task->done = false;
-            $task->date = date("Y-m-d",strtotime($request->date));
+            $task->date = \Carbon\Carbon::parse($request->date)->format('Y-m-d');
 
             $task->save();
-            //flash('Tipo de Propiedad Creado.', 'info')->important();
+            $LastInsertId = $task->id;
+            $this->sendMail($LastInsertId,$tracking->contact_id);
             return redirect()->route('Trackings.create',$tracking->contact_id);
-            //return response()->json($task);
-        //}
     }
 
     public function doneTask($id){
@@ -52,5 +54,29 @@ class TasksController extends Controller
         $task->save();
     }
 
+
+    public function sendMail($task_id,$customer_id){
+      $customer = Customer::find($customer_id);
+      $title = $customer->name;
+
+      $task = Task::find($task_id);
+
+      $tastType = TaskType::find($task->task_type_id);
+      $userName = \Auth::user()->name;
+
+
+      $content = "<p><strong>Tipo: </strong>". $tastType->name . "</p>";
+      $content = $content . "<p><strong>Notas: </strong>" . $task->notes . "</p>";
+      $content = $content . "<p><strong>Fecha: </strong>" . $task->date . "</p>";
+      $content = $content . "<p><strong>Hora Desde: </strong>" . $task->hour_from . "</p>";
+      $content = $content . "<p><strong>Hora Hasta: </strong>" . $task->hour_to . "</p>";
+      $content = $content . "<p><strong>Vendedor: </strong>" . $userName . "</p>";
+
+        Mail::send('Mail.send', ['title' => $title, 'content' => $content], function ($message)
+        {
+            //$message->from('orlando.cofre77@gmail.com', 'Administrador');
+            $message->to('orlando.cofre77@gmail.com')->subject('Nueva Tarea!');
+        });
+    }
 
 }

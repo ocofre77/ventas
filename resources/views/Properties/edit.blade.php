@@ -160,6 +160,7 @@
 
                         <div class="form-group">
                             {!! Form::submit('Editar',['class'=>'btn btn-primary', 'rows'=>3]) !!}
+                            <a class="btn btn-labeled btn-default" href="{{ route('Properties.index') }}"><span class="btn-label"><i class="fa fa-chevron-left"></i></span>{{ trans('entrust-gui::button.cancel') }}</a>
                         </div>
                         {!! Form::Close() !!}
                     </div>

@@ -35,7 +35,6 @@ class PropertiesController extends Controller
 
     public function index(Request $request)
     {
-        //$properties = null;
 
         if( $request->project != "" and $request->propertyType == "" )
         {
@@ -62,7 +61,6 @@ class PropertiesController extends Controller
         {
             $properties = Property::paginate(6);//orderBy('id','desc');//orderBy('id','desc');
         }
-
 
         $properties->each(function($properties){
             $properties->propertyType;
@@ -132,15 +130,15 @@ class PropertiesController extends Controller
         DB::beginTransaction();
         try{
             $property ->save();
-
             //Manipulación de Imágenes
-            if($request->file('image')){
+            if($request->file('images')){
                 $files = $request->file('images');
+                $index = 1;
                 foreach($files as $file){
                     $rules = array('file','required');
                     $validator = Validator::make(array('file'=>$file),$rules);
                     if($validator){
-                        $name = 'property'.time().'.'.$file->getClientOriginalExtension();
+                        $name = 'property'.time().$index.'.'.$file->getClientOriginalExtension();
                         $path = public_path().'/images/galery/';
                         $file->move($path,$name);
 
@@ -148,6 +146,7 @@ class PropertiesController extends Controller
                         $image->name = $name;
                         $image->property()->associate($property);
                         $image->save();
+                        $index = $index + 1;
                     }
                 }
             }
@@ -198,18 +197,19 @@ class PropertiesController extends Controller
         $property->owner_id = null;
 
         $files = $request->file('images');
-
+        $index = 1;
         foreach($files as $file){
             $rules = array('file','required');
             $validator = Validator::make(array('file'=>$file),$rules);
             if($validator){
-                $name = 'property'.time().'.'.$file->getClientOriginalExtension();
+                $name = 'property'.time().$index.'.'.$file->getClientOriginalExtension();
                 $path = public_path().'/images/galery/';
                 $file->move($path,$name);
                 $image = new Image();
                 $image->name = $name;
                 $image->property()->associate($property);
                 $image->save();
+                $index = $index + 1;
             }
         }
 

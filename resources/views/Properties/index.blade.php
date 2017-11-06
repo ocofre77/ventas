@@ -28,53 +28,11 @@
 @section('main-content')
 
   <div class="container-fluid spark-screen">
-
     <div class="row">
-	  <div class="col-xs-12">
-		<div class="box box-primary">
-			<div class="form-inline" id="filters">
-
-
-
-{{--                <div class="form-group">
-
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Tipo de Propiedad
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          @for ($i = 0; $i < 10; $i++)
-                            <li><a href="#">{{ $i }}</a></li>
-                          @endfor
-                        </ul>
-                      </div>
-
-                </div>--}}
-
-
-{{--
-				<div class="form-group">
-
-				{!! Form::label('name', 'Estado de la Propiedad') !!}
-
-				{!! Form::text('name',null ,['class'=>'form-control','placeholder'=>'Nombre del Estado', 'requerid' ]) !!}
-
-				</div>
-
-				<div class="form-group">
-				{!! Form::submit('Actualizar',['class'=>'btn btn-primary']) !!}
-				</div>
---}}
-
-			</div>
-{{--
-			<p class="text-center">
-				<a href="/pro/agencies/houses/list/?advanced=True">Búsqueda avanzada</a>
-			</p>
-
-			<hr style="margin:15px;">
---}}
+	  	<div class="col-xs-12">
+				<div class="box box-primary">
+					<div class="form-inline" id="filters">
+					</div>
 
           <div class="box-body">
             <div class="row">

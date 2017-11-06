@@ -25,13 +25,13 @@
 
         <div class="row">
             <div class="col-md-6 col-md-6">
-                {!! Form::label('date', 'Fecha') !!}
+                {!! Form::label('date', 'Fecha (Año/mes/día)') !!}
 
                 <div class="input-group date">
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    {!! Form::text('date', \Carbon\Carbon::now()->format('d/m/Y'),['class'=>' form-control pull-righ']) !!}
+                    {!! Form::text('date', \Carbon\Carbon::now()->format('Y/m/d'),['class'=>' form-control pull-righ']) !!}
                 </div>
             </div>
             <div class="col-md-3 col-md-6">
@@ -91,9 +91,24 @@
     <script>
         //Date picker
         $('#date').datepicker({
-            format: 'dd/mm/yyyy',
+            format: 'yyyy/mm/dd',
             autoclose: true
         });
+
+        //
+        // $.fn.datepicker.dates['es'] = {
+        //     days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Vieres", "Sábado"],
+        //     daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        //     daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+        //     months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        //     monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        //     today: "Today",
+        //     clear: "Clear",
+        //     format: "mm/dd/yyyy",
+        //     titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+        //     weekStart: 0
+        // };
+
 
         //Timepicker
         $(".timepicker").timepicker({

@@ -34,10 +34,10 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/home', 'DashboardsController@properties');
 
 
-	Route::get('/Dashboard1', 'DashboardsController@admin');
-	Route::get('/Dashboard2', 'DashboardsController@sales');
-	Route::get('/Dashboard3', 'DashboardsController@properties');
-	Route::get('/Marketing', 'DashboardsController@marketing');
+	// Route::get('/Dashboard1', 'DashboardsController@admin');
+	// Route::get('/Dashboard2', 'DashboardsController@sales');
+	// Route::get('/Dashboard3', 'DashboardsController@properties');
+	// Route::get('/Marketing', 'DashboardsController@marketing');
 
 	Route::resource('PropertyStates','PropertyStatesController');
 	Route::resource('PropertyTypes','PropertyTypesController');
@@ -47,9 +47,8 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('Trackings','TrackingsController');
 	Route::resource('Projects','ProjectsController');
 	Route::resource('Tags','TagsController');
-
 	Route::resource('Mail','MailController');
-
+	Route::resource('ImagesGallery','ImagesGalleryController');
 
 	Route::get('cities/{id}', [
 					'uses' => 'StatesController@getCities',
@@ -79,8 +78,6 @@ Route::group(['middleware' => 'web'], function () {
 		'uses' =>'MailController@send',
 		'as' => 'Mail.send'
 	]);
-
-
 
 	Route::get('/trackingDropProperty/{id}/{PropertyId}/DropProperty', [
 					'uses' => 'TrackingsController@dropProperty',
@@ -148,12 +145,17 @@ Route::group(['middleware' => 'web'], function () {
 			]
 	);
 
+	Route::get('/Customers/{id}/sendMail', [
+					'uses' => 'CustomersController@sendMail',
+					'as' => 'Customers.sendMail'
+			]
+	);
+
 	Route::get('/Projects/{id}/destroy', [
 					'uses' => 'ProjectsController@destroy',
 					'as' => 'Projects.destroy'
 			]
 	);
-
 
 	Route::get('/Tasks/{id}/create', [
 					'uses' => 'TasksController@create',
