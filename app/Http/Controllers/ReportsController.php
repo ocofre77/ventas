@@ -29,9 +29,8 @@ class ReportsController extends Controller
         return view('Reports.tasks');
     }
 
-
-
     public function salesData(Request $request){
+
         $sales = DB::table('customers')
             ->join('users', 'customers.user_id', '=', 'users.id')
             ->join('trackings','trackings.contact_id','=','customers.id')
@@ -53,11 +52,11 @@ class ReportsController extends Controller
         return Datatables::of($sales)
             ->filter(function ($query) use ($request) {
                 if ($request->has('date_from')) {
-                    $query->where('updated_at', '>=', "%{$request->get('date_from')}%");
+                    $query->where('trackings.updated_at', '>=', "{$request->get('date_from')}");
                 }
 
                 if ($request->has('date_to')) {
-                    $query->where('updated_at', '<=', "%{$request->get('date_to')}%");
+                    $query->where('tracking_date', '<=', "{$request->get('date_to')}");
                 }
 
             })
