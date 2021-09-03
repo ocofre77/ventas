@@ -26,3 +26,29 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 # ventas
+Sistema de Ventas de Propiedades y seguimiento de Tareas de Vendedores
+## Herramientas recomendadas
+    
+    1. VS Code
+    2. Laragon (Windows)
+    3. Composer
+
+
+## Instalación Ambiente Desarrollo
+
+    1. Clonar o copiar el código fuente en la siguiente ruta:
+       C:\laragon\www
+       de esta manera: C:\laragon\www\ventas
+       
+    2. Abrir Laragon
+        ◦ Presionar el botón: Star all, se inician el servicio de mysql y apache
+        ◦ Presionar el boton: Database y conectarse a la base de datos
+        ◦ Crear la base de datos en con el nombre “ventas”
+
+    3. Abrir el proyecto en VS Code
+    4. Abrir el archivo .env  se debe verificar que este correcta la configuración de la conección a la base de datos.
+    5. Abrir una terminar y ejecutar el siguiente comando: php artisan migrate 
+    6. Este comando crea la tablas de la base de datos
+        ◦ php artisan db:seed
+    7. En base de datos ejecutar el siguiente sql 
+       INSERT INTO `ventas`.`role_user` (`user_id`, `role_id`) VALUES ('1', '1');

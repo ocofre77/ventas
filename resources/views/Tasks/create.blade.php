@@ -59,7 +59,7 @@
                 {!! Form::label('task_type_id','Tipo de Tarea') !!}
                 {!! Form::select('task_type_id',$taskTypes, null,['class' =>'select form-control' ]) !!}
             </div>
-            <div class="col-md-6" style="display:none">
+            <div class="col-md-6" style="display:block" >
                 {!! Form::label('property_id','Inmueble') !!}
                 {!! Form::text('property_id', null,['class'=>'form-control']) !!}
             </div>

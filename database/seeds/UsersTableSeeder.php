@@ -14,20 +14,20 @@ class UsersTableSeeder extends Seeder
 
         //DB::Table('users')->delete();
 
-/*        $users = [
+        $users = [
             array(
                 'name'=> 'Orlando Cofre',
-                'email' => 'orlando.cofre77@gmail.com',
-                'password' => bcrypt("admin125x"),
-                'remember_token' => bcrypt("admin125x"),
+                'email' => 'orlando.cofre@demo.com',
+                'password' => bcrypt("admin1234"),
+                'remember_token' => bcrypt("admin1234"),
                 'created_at'=>date("Y-m-d H:i:s")
             ),
         ];
 
-        DB::Table('users')->insert($users);*/
+        DB::Table('users')->insert($users);
 
 
-        factory(App\User::class)->times(5)->create();
+        //factory(App\User::class)->times(5)->create();
 
     }
 }

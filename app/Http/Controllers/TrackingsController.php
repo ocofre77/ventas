@@ -210,7 +210,7 @@ class TrackingsController extends Controller
         $trackingPropery = new TrackingProperty();
         $trackingPropery->tracking_id = $request->tracking_id;
         $trackingPropery->property_id = $request->property_id;
-        $trackingPropery->winner = 0;
+        //$trackingPropery->winner = 0;
         $trackingPropery->save();
 
         $tracking = Tracking::find($request->tracking_id);
@@ -235,7 +235,7 @@ class TrackingsController extends Controller
         $trackingPropery = new TrackingProperty();
         $trackingPropery->tracking_id = $id;
         $trackingPropery->property_id = $propertyId;
-        $trackingPropery->winner = 0;
+        //$trackingPropery->winner = 0;
         $trackingPropery->save();
 
         $tracking = Tracking::find($id);
